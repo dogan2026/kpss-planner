@@ -4,581 +4,563 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>KPSS Asistanı 2026</title>
-<meta name="description" content="2026 KPSS Lisans ve ÖABT çalışma planı, konu takibi ve soru pratiği.">
 <meta name="theme-color" content="#1a1f3a">
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-:root {
-  --bg: #0d1117; --surface: rgba(255,255,255,0.05); --border: rgba(255,255,255,0.1);
-  --text: #e6edf3; --muted: #8b949e; --blue: #3b82f6; --purple: #8b5cf6;
-  --green: #10b981; --orange: #f59e0b; --red: #ef4444; --pink: #ec4899;
-}
-body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #0d1117 0%, #161b2e 100%); color: var(--text); min-height: 100vh; overflow-x: hidden; }
-.header { padding: 14px 20px; background: rgba(255,255,255,0.03); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(12px); }
-.logo { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
-.logo-badge { background: linear-gradient(90deg, var(--blue), var(--purple)); border-radius: 8px; padding: 2px 8px; font-size: 0.7rem; }
-.nav { display: flex; overflow-x: auto; gap: 4px; padding: 10px 14px; background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--border); -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-.nav::-webkit-scrollbar { display: none; }
-.nav-btn { flex-shrink: 0; background: transparent; border: 1px solid transparent; border-radius: 8px; color: var(--muted); font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 500; padding: 7px 13px; cursor: pointer; transition: all 0.2s; white-space: nowrap; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
-.nav-btn:active { opacity: 0.7; }
-.nav-btn.active { color: #fff; background: var(--blue); border-color: var(--blue); box-shadow: 0 2px 10px rgba(59,130,246,0.35); }
-.page { display: none; padding: 18px 14px; animation: fadeUp 0.3s ease; }
-.page.active { display: block; }
-@keyframes fadeUp { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; margin-bottom: 14px; }
-h2.page-title { font-family: 'Outfit', sans-serif; font-size: 1.5rem; text-align: center; margin-bottom: 4px; }
-p.page-subtitle { color: var(--muted); text-align: center; font-size: 0.85rem; margin-bottom: 18px; }
-.progress-label { display: flex; justify-content: space-between; font-size: 0.82rem; font-weight: 600; margin-bottom: 6px; }
-.progress-bar { height: 8px; background: rgba(255,255,255,0.08); border-radius: 8px; overflow: hidden; margin-bottom: 20px; }
-.progress-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--purple)); border-radius: 8px; transition: width 0.5s ease; }
-.tag { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 8px; background: rgba(59,130,246,0.18); color: #60a5fa; }
-.tag.orange { background: rgba(245,158,11,0.2); color: #fbbf24; }
-.tag.green { background: rgba(16,185,129,0.2); color: #34d399; }
-.countdown-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.countdown-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; text-align: center; }
-.countdown-card.blue { border-top: 3px solid var(--blue); }
-.countdown-card.orange { border-top: 3px solid var(--orange); }
-.countdown-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; }
-.countdown-card .date { font-size: 0.72rem; color: var(--muted); margin-bottom: 12px; }
-.timer-row { display: flex; justify-content: center; gap: 4px; align-items: center; }
-.time-unit { text-align: center; }
-.time-num { font-family: 'Outfit', sans-serif; font-size: 1.7rem; font-weight: 700; line-height: 1; display: block; }
-.time-lbl { font-size: 0.6rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
-.time-sep { font-size: 1.3rem; color: var(--border); margin-bottom: 10px; }
-.subject-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px; margin-bottom: 12px; }
-.subject-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
-.subject-name { font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 600; }
-.subject-count { font-size: 0.72rem; background: rgba(255,255,255,0.08); padding: 2px 8px; border-radius: 10px; font-weight: 600; }
-.subject-progress-bar { height: 3px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; margin-bottom: 10px; }
-.subject-progress-fill { height: 100%; transition: width 0.4s; }
-.topic-item { display: flex; align-items: center; gap: 10px; padding: 7px 4px; border-radius: 8px; cursor: pointer; transition: background 0.15s; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
-.topic-item:active { background: rgba(255,255,255,0.06); }
-.topic-item span { font-size: 0.85rem; user-select: none; flex: 1; }
-.custom-check { width: 20px; height: 20px; min-width: 20px; border: 2px solid var(--muted); border-radius: 6px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; font-size: 11px; font-weight: 700; color: white; }
-.topic-item.done .custom-check { background: var(--blue); border-color: var(--blue); }
-.topic-item.done span { color: var(--muted); text-decoration: line-through; }
-.day-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 13px; margin-bottom: 10px; }
-.day-name { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.95rem; margin-bottom: 8px; padding-bottom: 7px; border-bottom: 1px solid var(--border); }
-.day-tasks { display: flex; flex-direction: column; gap: 5px; }
-.task-pill { padding: 7px 11px; border-radius: 8px; font-size: 0.8rem; font-weight: 500; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-left-width: 3px; }
-/* Quiz */
-.quiz-info-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
-.quiz-day-label { font-size: 0.8rem; color: var(--muted); }
-.quiz-score-display { font-weight: 700; font-size: 0.85rem; background: rgba(255,255,255,0.07); padding: 5px 12px; border-radius: 20px; }
-.quiz-question-box { font-family: 'Outfit', sans-serif; font-size: 1.05rem; line-height: 1.6; margin-bottom: 18px; font-weight: 500; }
-.quiz-options { display: flex; flex-direction: column; gap: 9px; margin-bottom: 14px; }
-.option-btn { width: 100%; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 11px; color: var(--text); font-family: 'Inter', sans-serif; font-size: 0.87rem; padding: 13px 15px; text-align: left; cursor: pointer; display: flex; align-items: center; gap: 11px; transition: all 0.18s; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
-.option-btn:active:not(:disabled) { transform: scale(0.98); }
-.option-btn:not(:disabled):hover { background: rgba(255,255,255,0.07); }
-.option-btn.correct { background: rgba(16,185,129,0.14); border-color: var(--green); }
-.option-btn.wrong { background: rgba(239,68,68,0.14); border-color: var(--red); opacity: 0.8; }
-.option-btn:disabled { cursor: not-allowed; }
-.opt-letter { width: 28px; height: 28px; min-width: 28px; border-radius: 7px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; }
-.option-btn.correct .opt-letter { background: var(--green); }
-.option-btn.wrong .opt-letter { background: var(--red); }
-.feedback-box { display: none; border-radius: 11px; padding: 13px 15px; margin-bottom: 12px; border-left: 4px solid var(--blue); background: rgba(255,255,255,0.04); font-size: 0.85rem; line-height: 1.6; }
-.feedback-box.show { display: block; animation: fadeUp 0.3s ease; }
-.feedback-box.success { border-color: var(--green); }
-.feedback-box.fail { border-color: var(--red); }
-.feedback-title { font-weight: 700; margin-bottom: 4px; font-size: 0.92rem; }
-.btn-next { width: 100%; padding: 13px; background: linear-gradient(135deg, var(--blue), var(--purple)); color: white; border: none; border-radius: 11px; font-family: 'Outfit', sans-serif; font-size: 0.97rem; font-weight: 700; cursor: pointer; display: none; transition: opacity 0.2s, transform 0.15s; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
-.btn-next:active { transform: scale(0.97); }
-.quiz-end-box { text-align: center; padding: 16px 0; }
-.score-big { font-family: 'Outfit', sans-serif; font-size: 2.8rem; font-weight: 800; color: var(--blue); }
-.quiz-end-box p { color: var(--muted); margin: 8px 0 18px; font-size: 0.9rem; }
-.btn-restart { padding: 11px 26px; background: var(--blue); color: white; border: none; border-radius: 10px; font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 700; cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0d1117;--surface:rgba(255,255,255,0.05);--border:rgba(255,255,255,0.1);--text:#e6edf3;--muted:#8b949e;--blue:#3b82f6;--purple:#8b5cf6;--green:#10b981;--orange:#f59e0b;--red:#ef4444}
+body{font-family:'Inter',sans-serif;background:linear-gradient(135deg,#0d1117,#161b2e);color:var(--text);min-height:100vh;overflow-x:hidden}
+.hdr{padding:12px 16px;background:rgba(255,255,255,0.03);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;display:flex;align-items:center;gap:8px}
+.badge{background:linear-gradient(90deg,var(--blue),var(--purple));border-radius:7px;padding:2px 8px;font-size:0.68rem}
+.quote-strip{font-size:0.72rem;color:var(--muted);max-width:55%;text-align:right;line-height:1.3}
+.nav{display:flex;overflow-x:auto;gap:4px;padding:8px 12px;background:rgba(255,255,255,0.02);border-bottom:1px solid var(--border);scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nbtn{flex-shrink:0;background:transparent;border:1px solid transparent;border-radius:8px;color:var(--muted);font-family:'Inter',sans-serif;font-size:0.8rem;padding:6px 12px;cursor:pointer;transition:all .2s;white-space:nowrap;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.nbtn.active{color:#fff;background:var(--blue);border-color:var(--blue)}
+.page{display:none;padding:16px 14px;animation:fu .3s ease}
+.page.active{display:block}
+@keyframes fu{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:14px}
+h2.pt{font-family:'Outfit',sans-serif;font-size:1.45rem;text-align:center;margin-bottom:4px}
+p.ps{color:var(--muted);text-align:center;font-size:0.83rem;margin-bottom:16px}
+.tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:0.67rem;font-weight:700;letter-spacing:.5px;background:rgba(59,130,246,.18);color:#60a5fa}
+.tag.o{background:rgba(245,158,11,.2);color:#fbbf24}
+.tag.g{background:rgba(16,185,129,.2);color:#34d399}
+.tag.r{background:rgba(239,68,68,.2);color:#f87171}
+/* countdown */
+.cdg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cdc{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;text-align:center}
+.cdc.b{border-top:3px solid var(--blue)}.cdc.o{border-top:3px solid var(--orange)}
+.cdc h3{font-size:.88rem;font-weight:600;margin-bottom:3px}.cdc .dt{font-size:.7rem;color:var(--muted);margin-bottom:11px}
+.tr{display:flex;justify-content:center;gap:4px;align-items:center}
+.tu{text-align:center}.tnum{font-family:'Outfit',sans-serif;font-size:1.65rem;font-weight:700;line-height:1;display:block}
+.tlbl{font-size:.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.tsep{font-size:1.2rem;color:var(--border);margin-bottom:9px}
+/* progress */
+.plbl{display:flex;justify-content:space-between;font-size:.8rem;font-weight:600;margin-bottom:5px}
+.pb{height:7px;background:rgba(255,255,255,.07);border-radius:7px;overflow:hidden;margin-bottom:18px}
+.pf{height:100%;background:linear-gradient(90deg,var(--blue),var(--purple));border-radius:7px;transition:width .5s}
+/* topics */
+.sc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:13px;margin-bottom:11px}
+.sh{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;padding-bottom:7px;border-bottom:1px solid var(--border)}
+.sn{font-family:'Outfit',sans-serif;font-size:.92rem;font-weight:600}
+.scnt{font-size:.7rem;background:rgba(255,255,255,.08);padding:2px 8px;border-radius:10px;font-weight:600}
+.spb{height:3px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden;margin-bottom:9px}
+.spf{height:100%;transition:width .4s}
+.ti{display:flex;align-items:center;gap:9px;padding:6px 3px;border-radius:7px;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.ti span{font-size:.83rem;user-select:none;flex:1}
+.ck{width:19px;height:19px;min-width:19px;border:2px solid var(--muted);border-radius:5px;display:flex;align-items:center;justify-content:center;transition:all .2s;font-size:10px;font-weight:700;color:#fff}
+.ti.done .ck{background:var(--blue);border-color:var(--blue)}.ti.done span{color:var(--muted);text-decoration:line-through}
+/* planner */
+.dc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:9px}
+.dn{font-family:'Outfit',sans-serif;font-weight:700;font-size:.9rem;margin-bottom:7px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.dt2{display:flex;flex-direction:column;gap:5px}
+.tp{padding:7px 11px;border-radius:7px;font-size:.79rem;font-weight:500;background:rgba(255,255,255,.03);border:1px solid var(--border);border-left-width:3px}
+/* quiz */
+.qib{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.qsd{font-weight:700;font-size:.83rem;background:rgba(255,255,255,.07);padding:5px 11px;border-radius:20px}
+.qtxt{font-family:'Outfit',sans-serif;font-size:1.03rem;line-height:1.6;margin-bottom:16px;font-weight:500}
+.qopts{display:flex;flex-direction:column;gap:8px;margin-bottom:13px}
+.obtn{width:100%;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Inter',sans-serif;font-size:.85rem;padding:12px 14px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:10px;transition:all .18s;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.obtn:active:not(:disabled){transform:scale(.98)}.obtn:not(:disabled):hover{background:rgba(255,255,255,.07)}
+.obtn.correct{background:rgba(16,185,129,.14);border-color:var(--green)}.obtn.wrong{background:rgba(239,68,68,.14);border-color:var(--red);opacity:.8}
+.obtn:disabled{cursor:not-allowed}
+.ol{width:27px;height:27px;min-width:27px;border-radius:7px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.78rem}
+.obtn.correct .ol{background:var(--green)}.obtn.wrong .ol{background:var(--red)}
+.fb{display:none;border-radius:10px;padding:12px 14px;margin-bottom:11px;border-left:4px solid var(--blue);background:rgba(255,255,255,.04);font-size:.83rem;line-height:1.6}
+.fb.show{display:block;animation:fu .3s ease}.fb.ok{border-color:var(--green)}.fb.err{border-color:var(--red)}
+.fbt{font-weight:700;margin-bottom:3px;font-size:.9rem}
+.bnxt{width:100%;padding:12px;background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;border:none;border-radius:10px;font-family:'Outfit',sans-serif;font-size:.93rem;font-weight:700;cursor:pointer;display:none;touch-action:manipulation}
+.bnxt:active{transform:scale(.97)}
+.qend{text-align:center;padding:14px 0}
+.sbig{font-family:'Outfit',sans-serif;font-size:2.7rem;font-weight:800;color:var(--blue)}
+.brs{padding:10px 24px;background:var(--blue);color:#fff;border:none;border-radius:9px;font-family:'Outfit',sans-serif;font-size:.92rem;font-weight:700;cursor:pointer;touch-action:manipulation}
+/* deneme */
+.dstep{margin-bottom:14px}
+.dsub-row{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;margin-bottom:7px}
+.dsub-lbl{font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600}
+.dsub-cnt{font-size:.78rem;color:var(--muted)}
+.dscore-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.dscore-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center}
+.dscore-num{font-family:'Outfit',sans-serif;font-size:2rem;font-weight:800}
+.dscore-lbl{font-size:.72rem;color:var(--muted);margin-top:3px}
+.ai-box{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.25);border-radius:12px;padding:16px;margin-bottom:14px}
+.ai-title{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.ai-line{font-size:.83rem;line-height:1.7;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.ai-line:last-child{border:none}
+.sub-result{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-radius:8px;margin-bottom:6px;background:rgba(255,255,255,.03)}
+.sub-result.good{border-left:3px solid var(--green)}.sub-result.mid{border-left:3px solid var(--orange)}.sub-result.bad{border-left:3px solid var(--red)}
 </style>
 </head>
 <body>
-<div class="header">
-  <div class="logo">📖 KPSS Asistanı <span class="logo-badge">2026</span></div>
-  <span style="font-size:0.75rem;color:var(--muted)" id="header-date"></span>
+<div class="hdr">
+  <div class="logo">📖 KPSS Asistanı <span class="badge">2026</span></div>
+  <div class="quote-strip" id="daily-quote"></div>
 </div>
 <nav class="nav" id="mainNav">
-  <button class="nav-btn active" data-page="dashboard">🏠 Anasayfa</button>
-  <button class="nav-btn" data-page="topics">📋 Konular</button>
-  <button class="nav-btn" data-page="planner">📅 Program</button>
-  <button class="nav-btn" data-page="quiz">✏️ Soru Çöz</button>
+  <button class="nbtn active" data-page="dashboard">🏠 Anasayfa</button>
+  <button class="nbtn" data-page="topics">📋 Konular</button>
+  <button class="nbtn" data-page="planner">📅 Program</button>
+  <button class="nbtn" data-page="quiz">✏️ Günlük Soru</button>
+  <button class="nbtn" data-page="deneme">🎯 Mini Deneme</button>
 </nav>
 
 <!-- DASHBOARD -->
 <div class="page active" id="page-dashboard">
-  <h2 class="page-title">Hedefine Adım Adım!</h2>
-  <p class="page-subtitle">Düzenli çalış, sınava hazır ol.</p>
+  <h2 class="pt">Hedefine Adım Adım!</h2>
+  <p class="ps">Düzenli çalış, sınava hazır ol. Başarı senin elinde.</p>
   <div class="card">
-    <div class="progress-label"><span>📊 Genel Konu İlerlemesi</span><span id="total-percent">0%</span></div>
-    <div class="progress-bar"><div class="progress-fill" id="total-fill" style="width:0%"></div></div>
-    <div style="text-align:center;font-size:0.8rem;color:var(--muted)" id="today-topic">Bugünkü odak yükleniyor...</div>
+    <div class="plbl"><span>📊 Genel Konu İlerlemesi</span><span id="tot-pct">0%</span></div>
+    <div class="pb"><div class="pf" id="tot-fill" style="width:0%"></div></div>
+    <div style="font-size:.78rem;color:var(--muted);text-align:center" id="today-tip"></div>
   </div>
-  <div class="countdown-grid">
-    <div class="countdown-card blue">
-      <span class="tag">LİSANS</span>
-      <h3>GY - GK</h3><div class="date">6 Eylül 2026</div>
-      <div class="timer-row">
-        <div class="time-unit"><span class="time-num" id="d1">--</span><span class="time-lbl">Gün</span></div>
-        <div class="time-sep">:</div>
-        <div class="time-unit"><span class="time-num" id="h1">--</span><span class="time-lbl">Saat</span></div>
-        <div class="time-sep">:</div>
-        <div class="time-unit"><span class="time-num" id="m1">--</span><span class="time-lbl">Dk</span></div>
-      </div>
+  <div class="cdg">
+    <div class="cdc b"><span class="tag">LİSANS</span><h3>GY-GK</h3><div class="dt">6 Eylül 2026</div>
+      <div class="tr"><div class="tu"><span class="tnum" id="d1">--</span><span class="tlbl">Gün</span></div><div class="tsep">:</div><div class="tu"><span class="tnum" id="h1">--</span><span class="tlbl">Saat</span></div><div class="tsep">:</div><div class="tu"><span class="tnum" id="m1">--</span><span class="tlbl">Dk</span></div></div>
     </div>
-    <div class="countdown-card orange">
-      <span class="tag orange">ÖABT</span>
-      <h3>Alan Sınavı</h3><div class="date">12 Eylül 2026</div>
-      <div class="timer-row">
-        <div class="time-unit"><span class="time-num" id="d2">--</span><span class="time-lbl">Gün</span></div>
-        <div class="time-sep">:</div>
-        <div class="time-unit"><span class="time-num" id="h2">--</span><span class="time-lbl">Saat</span></div>
-        <div class="time-sep">:</div>
-        <div class="time-unit"><span class="time-num" id="m2">--</span><span class="time-lbl">Dk</span></div>
-      </div>
+    <div class="cdc o"><span class="tag o">ÖABT</span><h3>Alan Sınavı</h3><div class="dt">12 Eylül 2026</div>
+      <div class="tr"><div class="tu"><span class="tnum" id="d2">--</span><span class="tlbl">Gün</span></div><div class="tsep">:</div><div class="tu"><span class="tnum" id="h2">--</span><span class="tlbl">Saat</span></div><div class="tsep">:</div><div class="tu"><span class="tnum" id="m2">--</span><span class="tlbl">Dk</span></div></div>
     </div>
   </div>
 </div>
 
 <!-- TOPICS -->
 <div class="page" id="page-topics">
-  <h2 class="page-title">Konu Takibi</h2>
-  <p class="page-subtitle">Tamamladığın konuları işaretle. Kaydedilir.</p>
+  <h2 class="pt">Konu Takibi</h2><p class="ps">Tamamladığın konuları işaretle. Kaydedilir.</p>
   <div id="topic-list"></div>
 </div>
 
 <!-- PLANNER -->
 <div class="page" id="page-planner">
-  <h2 class="page-title">Haftalık Program</h2>
-  <p class="page-subtitle">ÖABT ağırlıklı, GY-GK destekli.</p>
+  <h2 class="pt">Haftalık Program</h2><p class="ps">ÖABT ağırlıklı, GY-GK destekli.</p>
   <div id="planner-list"></div>
 </div>
 
-<!-- QUIZ -->
+<!-- DAILY QUIZ -->
 <div class="page" id="page-quiz">
-  <h2 class="page-title">Soru Pratiği</h2>
-  <p class="page-subtitle" id="quiz-subtitle">Bugüne özel sorular yükleniyor...</p>
+  <h2 class="pt">Günlük Soru</h2><p class="ps" id="quiz-sub">Bugüne özel sorular yükleniyor...</p>
   <div class="card" id="quiz-box">
-    <div class="quiz-info-bar">
-      <span class="tag" id="q-category">-</span>
-      <span class="quiz-score-display">Skor: <span id="q-score">0</span></span>
-    </div>
-    <div style="font-size:0.72rem;color:var(--muted);margin-bottom:12px" id="q-counter"></div>
-    <div class="quiz-question-box" id="q-text">Soru yükleniyor...</div>
-    <div class="quiz-options" id="q-options"></div>
-    <div class="feedback-box" id="q-feedback">
-      <div class="feedback-title" id="q-feedback-title"></div>
-      <div id="q-feedback-text"></div>
-    </div>
-    <button class="btn-next" id="btn-next">Sonraki Soru →</button>
+    <div class="qib"><span class="tag" id="q-cat">-</span><span class="qsd">Skor: <span id="q-sc">0</span></span></div>
+    <div style="font-size:.7rem;color:var(--muted);margin-bottom:10px" id="q-cnt"></div>
+    <div class="qtxt" id="q-txt">Yükleniyor...</div>
+    <div class="qopts" id="q-opts"></div>
+    <div class="fb" id="q-fb"><div class="fbt" id="q-fbt"></div><div id="q-fbtx"></div></div>
+    <button class="bnxt" id="btn-nxt">Sonraki →</button>
   </div>
   <div class="card" id="quiz-end" style="display:none">
-    <div class="quiz-end-box">
-      <div style="font-size:2.5rem">🎉</div>
-      <div class="score-big" id="end-score"></div>
-      <p id="end-msg"></p>
-      <button class="btn-restart" id="btn-restart">Tekrar Başla</button>
+    <div class="qend"><div style="font-size:2.5rem">🎉</div><div class="sbig" id="end-sc"></div><p id="end-msg" style="color:var(--muted);margin:8px 0 18px;font-size:.88rem"></p><button class="brs" id="btn-rs">Tekrar Başla</button></div>
+  </div>
+</div>
+
+<!-- MINI DENEME -->
+<div class="page" id="page-deneme">
+  <h2 class="pt">Mini Deneme</h2><p class="ps">Gerçek KPSS dağılımına göre 30 soruluk öğretmen denemesi.</p>
+
+  <!-- Bilgi -->
+  <div class="card" id="den-info">
+    <div style="margin-bottom:12px">
+      <div style="font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:8px">📋 Deneme Yapısı</div>
+      <div class="dsub-row"><span class="dsub-lbl">🟦 GY-GK Bölümü</span><span class="dsub-cnt">20 soru</span></div>
+      <div style="padding-left:12px">
+        <div class="dsub-row"><span class="dsub-lbl">📚 Türkçe</span><span class="dsub-cnt">5 soru</span></div>
+        <div class="dsub-row"><span class="dsub-lbl">➗ Matematik</span><span class="dsub-cnt">5 soru</span></div>
+        <div class="dsub-row"><span class="dsub-lbl">🏺 Tarih</span><span class="dsub-cnt">4 soru</span></div>
+        <div class="dsub-row"><span class="dsub-lbl">🌍 Coğrafya</span><span class="dsub-cnt">3 soru</span></div>
+        <div class="dsub-row"><span class="dsub-lbl">⚖️ Vatandaşlık</span><span class="dsub-cnt">2 soru</span></div>
+        <div class="dsub-row"><span class="dsub-lbl">📰 Güncel</span><span class="dsub-cnt">1 soru</span></div>
+      </div>
+      <div class="dsub-row" style="margin-top:6px"><span class="dsub-lbl">🟧 ÖABT Bölümü</span><span class="dsub-cnt">10 soru</span></div>
+      <div style="padding-left:12px">
+        <div class="dsub-row"><span class="dsub-lbl">📐 Geometri + Sayılar</span><span class="dsub-cnt">4 soru</span></div>
+        <div class="dsub-row"><span class="dsub-lbl">📈 Analiz + Cebir</span><span class="dsub-cnt">4 soru</span></div>
+        <div class="dsub-row"><span class="dsub-lbl">👨‍🏫 Alan Eğitimi</span><span class="dsub-cnt">2 soru</span></div>
+      </div>
     </div>
+    <div style="font-size:.78rem;color:var(--muted);margin-bottom:14px">Net = Doğru − (Yanlış × 0.25)&nbsp;|&nbsp;Boşlar sayılmaz</div>
+    <button class="bnxt" style="display:block" id="btn-start-den">Denemeyi Başlat 🚀</button>
+  </div>
+
+  <!-- Soru Alanı -->
+  <div class="card" id="den-box" style="display:none">
+    <div class="qib">
+      <span class="tag" id="den-cat">-</span>
+      <span class="qsd" id="den-cnt">-</span>
+    </div>
+    <div class="qtxt" id="den-txt"></div>
+    <div class="qopts" id="den-opts"></div>
+    <div class="fb" id="den-fb"><div class="fbt" id="den-fbt"></div><div id="den-fbtx"></div></div>
+    <button class="bnxt" id="btn-den-nxt">Sonraki →</button>
+    <button class="bnxt" id="btn-den-skip" style="background:rgba(255,255,255,.08);margin-top:8px;color:var(--muted)">Boş Bırak →</button>
+  </div>
+
+  <!-- Sonuç -->
+  <div id="den-result" style="display:none">
+    <div class="card">
+      <div style="text-align:center;margin-bottom:16px">
+        <div style="font-size:2rem;margin-bottom:6px">📊</div>
+        <div style="font-family:'Outfit',sans-serif;font-size:1.2rem;font-weight:700">Deneme Sonucu</div>
+      </div>
+      <div class="dscore-grid">
+        <div class="dscore-card"><div class="dscore-num" id="res-dogru" style="color:var(--green)"></div><div class="dscore-lbl">Doğru</div></div>
+        <div class="dscore-card"><div class="dscore-num" id="res-yanlis" style="color:var(--red)"></div><div class="dscore-lbl">Yanlış</div></div>
+        <div class="dscore-card"><div class="dscore-num" id="res-bos" style="color:var(--muted)"></div><div class="dscore-lbl">Boş</div></div>
+        <div class="dscore-card"><div class="dscore-num" id="res-net" style="color:var(--blue)"></div><div class="dscore-lbl">Net</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+        <div class="dscore-card"><div class="dscore-num" id="res-gygk" style="color:var(--purple);font-size:1.5rem"></div><div class="dscore-lbl">GY-GK Tahmini Puan</div></div>
+        <div class="dscore-card"><div class="dscore-num" id="res-oabt" style="color:var(--orange);font-size:1.5rem"></div><div class="dscore-lbl">ÖABT Tahmini Puan</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div style="margin-bottom:12px">
+        <div style="font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:10px">Konu Bazlı Sonuçlar</div>
+        <div id="sub-results"></div>
+      </div>
+    </div>
+    <div class="ai-box">
+      <div class="ai-title">🤖 Yapay Zeka Analizi</div>
+      <div id="ai-analysis"></div>
+    </div>
+    <button class="brs" style="width:100%;padding:12px" id="btn-den-restart">Yeni Deneme 🔄</button>
   </div>
 </div>
 
 <script>
-// ============================================================
-// SORU BANKASI - Günlük rotasyonlu 40 soru
-// ============================================================
-var ALL_QUESTIONS = [
-  // ---- TARÍH (8 soru) ----
-  { cat:'GY-GK | Tarih', day:[0,3],
-    q:'Osmanlı\'da padişahın mutlak otoritesini ilk kez sınırlandıran belge hangisidir?',
-    opts:['Sened-i İttifak','Tanzimat Fermanı','Islahat Fermanı','Kanuni Esasi','Teşkilat-ı Esasiye'], ans:0,
-    exp:'Sened-i İttifak (1808), padişahın yetkilerini kısıtlayan ilk belgedir. II. Mahmut ile Ayanlar arasında imzalanmıştır.' },
-  { cat:'GY-GK | Tarih', day:[1,4],
-    q:'Kurtuluş Savaşı\'nda ilk düzenli ordu cephesi hangisidir?',
-    opts:['Batı Cephesi','Güney Cephesi','Doğu Cephesi','Merkez Cephesi','Kuzey Cephesi'], ans:2,
-    exp:'Doğu Cephesi (Kazım Karabekir) ilk düzenli ordu cephesidir. Eylül-Kasım 1920\'deki Ermeni Savaşı\'nda zafer kazanılmıştır.' },
-  { cat:'GY-GK | Tarih', day:[2,5],
-    q:'Misak-ı Milli kararları hangi meclis tarafından alınmıştır?',
-    opts:['TBMM','Son Osmanlı Mebusan Meclisi','Danıştay','Divan-ı Hümayun','Şura-yı Devlet'], ans:1,
-    exp:'Misak-ı Milli (Ocak 1920), İstanbul\'daki son Osmanlı Mebusan Meclisi tarafından kabul edilmiştir.' },
-  { cat:'GY-GK | Tarih', day:[0,6],
-    q:'Atatürk\'ün "Nutuk" adlı eseri hangi tarihler arasındaki olayları anlatır?',
-    opts:['1919-1927','1918-1923','1920-1930','1923-1938','1915-1920'], ans:0,
-    exp:'Nutuk, 1919-1927 yılları arasındaki olayları kapsar ve 1927\'deki CHP Kurultayı\'nda okunmuştur.' },
-  { cat:'GY-GK | Tarih', day:[1,3],
-    q:'Lozan Antlaşması\'nda Türkiye\'ye bırakılan adaların en büyüğü hangisidir?',
-    opts:['Bozcaada','Gökçeada','Meis','Rodos','Samos'], ans:1,
-    exp:'Gökçeada (İmroz), Lozan\'da Türkiye\'ye bırakılan en büyük adadır.' },
-  { cat:'GY-GK | Tarih', day:[2,4],
-    q:'Osmanlı\'da ilk anayasa olan Kanun-i Esasi hangi yılda ilan edildi?',
-    opts:['1856','1876','1889','1908','1839'], ans:1,
-    exp:'Kanun-i Esasi 1876\'da II. Abdülhamit döneminde ilan edilmiş, Osmanlı\'nın ilk anayasasıdır.' },
-  { cat:'GY-GK | Tarih', day:[5,0],
-    q:'Anadolu\'da Türk varlığını kalıcı hâle getiren savaş hangisidir?',
-    opts:['Pasinler','Malazgirt','Miryokefalon','Kösedağ','Haçova'], ans:1,
-    exp:'1071 Malazgirt Savaşı, Anadolu\'nun Türklere kapısını açan ve Türk varlığını kalıcı hale getiren savaştır.' },
-  { cat:'GY-GK | Tarih', day:[6,2],
-    q:'Kapitülasyonlar hangi antlaşmayla tamamen kaldırılmıştır?',
-    opts:['Mondros','Sevr','Lozan','Mudanya','Ankara'], ans:2,
-    exp:'Kapitülasyonlar 1923 Lozan Antlaşması ile tamamen kaldırılmış ve Türkiye tam bağımsızlığını kazanmıştır.' },
+// ============== SORULAR ==============
+var GYGK_Q = {
+  turkce:[
+    {q:'"Ne doğan güneşe hükmüm geçer / Ne halden anlayan bulunur" — Hangisi YOKTUR?',opts:['Sıfat-fiil','Olumsuzluk eki','Bağlaç','İsim tamlaması','Eylemsi'],ans:3,exp:'"Doğan"=sıfat-fiil, "ne...ne"=bağlaç. İsim tamlaması yoktur.'},
+    {q:'"Kitabı okudu" cümlesinde nesne nedir?',opts:['Kitabı','Okudu','Özne','Yüklem','Tümleç'],ans:0,exp:'"Kitabı" belirtili nesnedir; "-ı" hâliyle belirtilmiş.'},
+    {q:'Hangi kelimede yazım yanlışı var?',opts:['hâlâ','fakat','lakin','de ki','herşey'],ans:4,exp:'"Her şey" ayrı yazılır; bitişik "herşey" yanlıştır.'},
+    {q:'"Eve girince baktı" cümlesi hangi tür cümledir?',opts:['Basit','Sıralı','Bağlı','Bileşik','Devrik'],ans:3,exp:'"Girince" yan cümlesi oluşturur → Bileşik cümledir.'},
+    {q:'"Yokuşu çıkmak" ifadesinde altı çizili sözcüğün türü?',opts:['Fiil','Zarf','Mastar','İsim','Sıfat'],ans:2,exp:'"Çıkmak" -mak mastar ekiyle isim görevinde kullanılmıştır.'}
+  ],
+  matematik:[
+    {q:'%40ını %20 kârla, kalanın %50sini %10 zararla geri kalanı maliyetine satan satıcının net durumu?',opts:['%5 Kâr','%5 Zarar','%3 Kâr','Zararsız','%8 Kâr'],ans:0,exp:'40×120+30×90+30×100=10500 TL; maliyet 10000 → %5 kâr.'},
+    {q:'İki boruyla 6 ve 12 saatte dolan havuz ikisi açık kaç saatte dolar?',opts:['3','4','5','6','2'],ans:1,exp:'1/6+1/12=3/12=1/4 → 4 saatte dolar.'},
+    {q:'120 km 1,5 saatte alınıyor. 200 km için kaç saat?',opts:['2','2.5','3','3.5','4'],ans:1,exp:'Hız=80 km/h → 200/80=2,5 saat.'},
+    {q:'3, 6, 12, 24, ... dizisinin 7. terimi?',opts:['96','128','192','256','384'],ans:2,exp:'Oran=2 → 3×2⁶=192.'},
+    {q:'%25 indirimli ürünün indirimsiz fiyatı 200 TL ise indirimlisi?',opts:['100','125','140','150','175'],ans:3,exp:'200×0,75=150 TL.'}
+  ],
+  tarih:[
+    {q:'Padişahın mutlak otoritesini ilk sınırlandıran belge?',opts:['Sened-i İttifak','Tanzimat Fermanı','Islahat Fermanı','Kanuni Esasi','Teşkilat-ı Esasiye'],ans:0,exp:'Sened-i İttifak (1808) ayanlarla imzalanan ilk belgedir.'},
+    {q:'Misak-ı Milli hangi meclis tarafından kabul edildi?',opts:['TBMM','Son Osmanlı Mebusan Meclisi','Danıştay','Şura-yı Devlet','Meclisi Mebusan'],ans:1,exp:'Ocak 1920, İstanbul\'daki son Osmanlı Mebusan Meclisi.'},
+    {q:'Kurtuluş Savaşı\'nda ilk düzenli ordu cephesi?',opts:['Batı','Güney','Doğu','Merkez','Kuzey'],ans:2,exp:'Doğu Cephesi — Kazım Karabekir, Ermeni Savaşı 1920.'},
+    {q:'Kanun-i Esasi hangi yılda ilan edildi?',opts:['1856','1876','1889','1908','1839'],ans:1,exp:'1876 — II. Abdülhamit döneminde ilan edilen ilk Osmanlı anayasası.'}
+  ],
+  cografya:[
+    {q:'Türkiye\'de tektonik kökenli olmayan göl?',opts:['İznik','Tuz','Sapanca','Meke Tuzlası','Burdur'],ans:3,exp:'Meke Tuzlası maar (volkanik) gölüdür.'},
+    {q:'En fazla yağış hangi bölgede görülür?',opts:['Karadeniz','Ege','Akdeniz','Marmara','İç Anadolu'],ans:0,exp:'Doğu Karadeniz (Rize) ~2500 mm ile Türkiye\'nin en yağışlı yeridir.'},
+    {q:'Türkiye\'nin en uzun nehri?',opts:['Fırat','Dicle','Kızılırmak','Sakarya','Yeşilırmak'],ans:2,exp:'Kızılırmak ~1355 km ile tamamı Türkiye sınırlarında akandır.'}
+  ],
+  vatandaslik:[
+    {q:'Savaş ilanına 1982 Anayasasına göre kim karar verir?',opts:['Cumhurbaşkanı','TBMM','MGK','Genelkurmay','Bakanlık'],ans:1,exp:'1982 Any. Madde 92: Savaş ilanı yetkisi TBMM\'ye aittir.'},
+    {q:'Cumhurbaşkanı kaç yıl için seçilir?',opts:['4','5','6','7','3'],ans:1,exp:'5 yıl ve en fazla 2 dönem görev yapabilir.'}
+  ],
+  guncel:[
+    {q:'Türkiye Büyük Millet Meclisi kaç milletvekilinden oluşur?',opts:['450','500','550','600','650'],ans:3,exp:'2017 anayasa değişikliği ile 550\'den 600\'e çıkarılmıştır.'}
+  ]
+};
 
-  // ---- COĞRAFYA (6 soru) ----
-  { cat:'GY-GK | Coğrafya', day:[0,4],
-    q:'Türkiye\'de tektonik kökenli olmayan göl hangisidir?',
-    opts:['İznik Gölü','Tuz Gölü','Sapanca Gölü','Meke Tuzlası','Burdur Gölü'], ans:3,
-    exp:'Meke Tuzlası volkanik (maar) gölüdür. Tuz, Sapanca, İznik ve Burdur tektonik kökenlidir.' },
-  { cat:'GY-GK | Coğrafya', day:[1,5],
-    q:'Türkiye\'de en fazla yağış hangi bölgede görülür?',
-    opts:['Karadeniz','Ege','Akdeniz','Marmara','İç Anadolu'], ans:0,
-    exp:'Doğu Karadeniz (Rize) yıllık 2500mm ile Türkiye\'nin en yağışlı bölgesidir.' },
-  { cat:'GY-GK | Coğrafya', day:[2,6],
-    q:'Türkiye\'nin yüzölçümü bakımından en büyük gölü hangisidir?',
-    opts:['Van Gölü','Tuz Gölü','Beyşehir','Eğirdir','İznik'], ans:0,
-    exp:'Van Gölü yaklaşık 3755 km² ile Türkiye\'nin en büyük gölüdür. Bir soda gölüdür.' },
-  { cat:'GY-GK | Coğrafya', day:[3,0],
-    q:'Türkiye\'nin en uzun nehri hangisidir?',
-    opts:['Fırat','Dicle','Kızılırmak','Sakarya','Yeşilırmak'], ans:2,
-    exp:'Kızılırmak ~1355 km ile Türkiye\'nin en uzun nehridir. Tamamı Türkiye sınırları içinde akar.' },
-  { cat:'GY-GK | Coğrafya', day:[4,1],
-    q:'Türkiye\'de en yüksek dağ hangisidir?',
-    opts:['Erciyes','Süphan','Ağrı','Cilo','Uludağ'], ans:2,
-    exp:'Ağrı Dağı 5137 m ile Türkiye\'nin ve Yakın Doğu\'nun en yüksek dağıdır.' },
-  { cat:'GY-GK | Coğrafya', day:[5,2],
-    q:'Türkiye\'de en fazla hangi tarım ürünü üretilir (alan bakımından)?',
-    opts:['Buğday','Arpa','Mısır','Pamuk','Tütün'], ans:0,
-    exp:'Buğday, Türkiye\'nin hem üretim miktarı hem de ekim alanı bakımından en önemli tarım ürünüdür.' },
+var OABT_Q = {
+  sayilar:[
+    {q:'1\'den 100\'e kadar sayılar yan yana yazılan sayının 9\'a bölümünden kalan?',opts:['1','2','3','4','0'],ans:0,exp:'Rakamlar toplamı 901; 9+0+1=10 → 1+0=1. Kalan 1.'},
+    {q:'EBOB(3,7) + EKOK(3,7) = ?',opts:['22','21','23','24','28'],ans:0,exp:'EBOB=1, EKOK=21 → 1+21=22.'}
+  ],
+  geometri:[
+    {q:'A(2,-3)\'ün y=x\'e göre simetriği B, B\'nin orijine göre simetriği C. C=?',opts:['(2,-3)','(-3,2)','(3,-2)','(-2,3)','(2,3)'],ans:2,exp:'B(-3,2), orijine göre C(3,-2).'},
+    {q:'30-60-90 üçgeninde en uzun:en kısa kenar oranı?',opts:['1:2','1:√3','2:1','√3:1','√2:1'],ans:2,exp:'Kenarlar 1:√3:2 → en uzun 2, en kısa 1 → oran 2:1.'}
+  ],
+  analiz:[
+    {q:'f(x)=x³-3x²+4 fonksiyonunun yerel minimum değeri?',opts:['0','2','4','-2','8'],ans:0,exp:'f\'=3x(x-2)=0; x=2\'de min: f(2)=8-12+4=0.'},
+    {q:'f(x)=3x²+2x\'in x=1\'deki türevi?',opts:['5','6','8','7','4'],ans:2,exp:'f\'=6x+2; f\'(1)=8.'}
+  ],
+  cebir:[
+    {q:'x²-5x+6=0 köklerinin toplamı?',opts:['5','6','-5','3','2'],ans:0,exp:'Viète: kökler toplamı = 5/1 = 5.'},
+    {q:'A=[[1,2],[3,4]] B=[[5,6],[7,8]] AxB\'nin (1,1) elemanı?',opts:['19','23','17','22','21'],ans:0,exp:'1×5+2×7=19.'}
+  ],
+  alanEgitimi:[
+    {q:'"Somuttan soyuta" ilkesine göre ilk aşamada kullanılması gereken yaklaşım?',opts:['Sembolik','Sezgisel','Somut Materyal','Soyut Kural','Ezber'],ans:2,exp:'Bruner\'ın modeli: Enaktif (somut) → İkonik → Sembolik.'},
+    {q:'İlköğretim matematik öğretiminde problem çözme sürecindeki ilk adım?',opts:['Plan yap','Problemi anla','Çöz','Kontrol et','Genelleştir'],ans:1,exp:'Polya\'nın 4 adımı: 1.Problemi anla → 2.Plan yap → 3.Uygula → 4.Kontrol.'}
+  ]
+};
 
-  // ---- VATANDAŞLIK (5 soru) ----
-  { cat:'GY-GK | Vatandaşlık', day:[0,5],
-    q:'1982 Anayasası\'na göre savaş ilanına kim karar verir?',
-    opts:['Cumhurbaşkanı','TBMM','Milli Güvenlik Kurulu','Genelkurmay','Bakanlar Kurulu'], ans:1,
-    exp:'1982 Anayasası 92. Madde: Savaş ilanına karar verme yetkisi doğrudan TBMM\'ye aittir.' },
-  { cat:'GY-GK | Vatandaşlık', day:[1,6],
-    q:'Anayasaya göre Cumhurbaşkanı kaç yıl için seçilir?',
-    opts:['4 yıl','5 yıl','6 yıl','7 yıl','3 yıl'], ans:1,
-    exp:'1982 Anayasası\'na göre Cumhurbaşkanı 5 yıl için seçilir ve en fazla 2 dönem görev yapabilir.' },
-  { cat:'GY-GK | Vatandaşlık', day:[2,0],
-    q:'Temel hak ve özgürlükler hangi durumlarda kısıtlanabilir?',
-    opts:['Her zaman','Yalnız savaşta','Olağanüstü hâlde ve kanunla','Kanun çıkmadan','Hiçbir zaman'], ans:2,
-    exp:'Anayasanın 13. maddesi: Temel hak ve özgürlükler yalnızca olağanüstü hâllerde ve kanunla sınırlandırılabilir.' },
-  { cat:'GY-GK | Vatandaşlık', day:[3,1],
-    q:'TBMM kaç milletvekilinden oluşur?',
-    opts:['450','500','550','600','650'], ans:3,
-    exp:'2017 Anayasa değişikliğiyle TBMM üye sayısı 550\'den 600\'e çıkarılmıştır.' },
-  { cat:'GY-GK | Vatandaşlık', day:[4,2],
-    q:'Türkiye Cumhuriyeti\'nin başkenti Anayasa\'da hangi maddede belirtilmiştir?',
-    opts:['Madde 1','Madde 2','Madde 3','Madde 4','Madde 5'], ans:2,
-    exp:'Anayasa\'nın 3. maddesi: "Türkiye Devleti\'nin başkenti Ankara\'dır." hükmünü içerir.' },
-
-  // ---- MATEMATİK (6 soru) ----
-  { cat:'GY-GK | Matematik', day:[0,3],
-    q:'Bir satıcı %40\'ını %20 kârla, kalanın %50\'sini %10 zararla, geri kalanı maliyetinden satıyor. Toplam kâr/zarar?',
-    opts:['%5 Kâr','%5 Zarar','%10 Kâr','Ne kâr ne zarar','%3 Kâr'], ans:0,
-    exp:'100 birim, 100TL maliyet → 40×120 + 30×90 + 30×100 = 4800+2700+3000 = 10500TL → %5 kâr.' },
-  { cat:'GY-GK | Matematik', day:[1,4],
-    q:'Bir havuz iki boruda 6 ve 12 saatte doluyor. İkisi birlikte açık olursa kaç saatte dolar?',
-    opts:['3','4','5','6','2'], ans:1,
-    exp:'Birlikte: 1/6 + 1/12 = 3/12 = 1/4. Yani 4 saatte dolar.' },
-  { cat:'GY-GK | Matematik', day:[2,5],
-    q:'Bir araç 120 km yolu 1.5 saatte alıyor. Aynı hızla 200 km için kaç saat gerekir?',
-    opts:['2','2.5','3','3.5','4'], ans:1,
-    exp:'Hız = 120/1.5 = 80 km/h. Süre = 200/80 = 2.5 saat.' },
-  { cat:'GY-GK | Matematik', day:[3,6],
-    q:'3, 6, 12, 24, ... dizisinin 7. terimi kaçtır?',
-    opts:['96','128','192','256','384'], ans:2,
-    exp:'Geometrik dizi: oran=2. 7. terim = 3 × 2^6 = 3 × 64 = 192.' },
-  { cat:'GY-GK | Matematik', day:[4,0],
-    q:'%25 indirim yapılan ürünün indirimsiz fiyatı 200 TL ise indirimli fiyatı kaçtır?',
-    opts:['100 TL','125 TL','140 TL','150 TL','175 TL'], ans:3,
-    exp:'200 × (1 - 0.25) = 200 × 0.75 = 150 TL.' },
-  { cat:'GY-GK | Matematik', day:[5,1],
-    q:'1\'den 100\'e kadar sayılar yan yana yazılan sayının 9\'a bölümünden kalan kaçtır?',
-    opts:['1','2','3','4','0'], ans:0,
-    exp:'1-100 arası rakamlar toplamı 901\'dir. 9+0+1=10, 1+0=1. Kalan 1\'dir.' },
-
-  // ---- TÜRKÇE (5 soru) ----
-  { cat:'GY-GK | Türkçe', day:[0,4],
-    q:'"Ne doğan güneşe hükmüm geçer / Ne halden anlayan bulunur" - Dizelerinde hangisi YOKTUR?',
-    opts:['Sıfat-fiil','Olumsuzluk eki','Bağlaç','İsim tamlaması','Eylemsi'], ans:3,
-    exp:'Bu dizelerde "doğan" (sıfat-fiil), "ne...ne" (bağlaç) var. Belirtili ya da belirtisiz isim tamlaması yoktur.' },
-  { cat:'GY-GK | Türkçe', day:[1,5],
-    q:'"Yokuşu çıkmak" ifadesindeki altı çizili sözcüğün türü nedir?',
-    opts:['Fiil','Zarf','Eylemsi (mastar)','İsim','Sıfat'], ans:2,
-    exp:'"Çıkmak" mastar (-mak eki) alan bir eylemsidir. İsim görevinde kullanılmıştır.' },
-  { cat:'GY-GK | Türkçe', day:[2,6],
-    q:'Aşağıdakilerden hangisi bileşik cümledir?',
-    opts:['"Koştu, geçti."','"Uçan kuş görüldü."','"Eve girince baktı."','"Güzel bir yer."','"Hızlı gitti."'], ans:2,
-    exp:'"Girince" zaman yan cümlesi oluşturur. Bu yapı bileşik cümledir; iki yargı birleştirilmiştir.' },
-  { cat:'GY-GK | Türkçe', day:[3,0],
-    q:'"Kitabı okudu" cümlesinde nesne nedir?',
-    opts:['Kitabı','Okudu','Cümle yok','Özne','Yüklem'], ans:0,
-    exp:'"Kitabı" belirtili nesnedir. "-ı" hâl ekiyle belirtilmiş, fiilin etkilediği unsurdur.' },
-  { cat:'GY-GK | Türkçe', day:[4,1],
-    q:'Hangi kelimede yazım yanlışı vardır?',
-    opts:['hâlâ','fakat','lakin','de ki','herşey'], ans:4,
-    exp:'"Herşey" yanlış, doğrusu "her şey" şeklinde ayrı yazılmalıdır.' },
-
-  // ---- ÖABT (10 soru) ----
-  { cat:'ÖABT | Geometri', day:[0,5],
-    q:'A(2,-3) noktasının y=x doğrusuna göre simetriği B, B\'nin orijine göre simetriği C\'dir. C?',
-    opts:['(2,-3)','(-3,2)','(3,-2)','(-2,3)','(2,3)'], ans:2,
-    exp:'A(x,y)\'nin y=x\'e göre simetriği B(-3,2). B\'nin orijine göre simetriği C(3,-2).' },
-  { cat:'ÖABT | Analiz', day:[1,6],
-    q:'f(x)=x³-3x²+4 fonksiyonunun yerel minimum noktasındaki değeri kaçtır?',
-    opts:['0','2','4','-2','8'], ans:0,
-    exp:'f\'(x)=3x²-6x=0 → x=0, x=2. x=2\'de min: f(2)=8-12+4=0.' },
-  { cat:'ÖABT | Sayılar', day:[2,0],
-    q:'3 ile 7 nin EBOB ve EKOK\'larının toplamı kaçtır?',
-    opts:['22','21','23','24','28'], ans:0,
-    exp:'EBOB(3,7)=1, EKOK(3,7)=21. Toplam = 1+21 = 22.' },
-  { cat:'ÖABT | Cebir', day:[3,1],
-    q:'A=[[1,2],[3,4]], B=[[5,6],[7,8]] için AxB matrisinin (1,1) elemanı kaçtır?',
-    opts:['19','23','17','22','21'], ans:0,
-    exp:'(1,1) elemanı: 1×5 + 2×7 = 5+14 = 19.' },
-  { cat:'ÖABT | Analiz', day:[4,2],
-    q:'∫(2x+3)dx integralinin sonucu nedir? (sabit C dahil)',
-    opts:['x²+3x+C','x²+3+C','2x²+3x+C','2+C','x+3x+C'], ans:0,
-    exp:'∫2x dx = x², ∫3 dx = 3x. Toplam: x²+3x+C.' },
-  { cat:'ÖABT | Geometri', day:[5,3],
-    q:'Bir üçgenin iç açıları 30°, 60°, 90° ise en uzun kenar ile en kısa kenar oranı nedir?',
-    opts:['1:2','1:√3','2:1','√3:1','√2:1'], ans:0,
-    exp:'30-60-90 üçgeninde kenarlar 1:√3:2 oranındadır. En uzun (90° karşısı): 2, en kısa (30° karşısı): 1. Oran 2:1 yani 1:2.' },
-  { cat:'ÖABT | Sayılar', day:[6,1],
-    q:'2^10 = 1024 ise log₂(1024) kaçtır?',
-    opts:['8','9','10','11','12'], ans:2,
-    exp:'log₂(1024) = log₂(2^10) = 10.' },
-  { cat:'ÖABT | Alan Eğitimi', day:[0,2],
-    q:'İlköğretimde matematik öğretiminde "somuttan soyuta" ilkesine göre hangi yaklaşım önceliklidir?',
-    opts:['Sembolik','Sezgisel','Somut materyal','Soyut kural','Ezber'], ans:2,
-    exp:'Bruner\'ın enaktif-ikonik-sembolik modeli gereği somut materyal ilk aşamada kullanılmalıdır.' },
-  { cat:'ÖABT | Cebir', day:[5,4],
-    q:'x² - 5x + 6 = 0 denkleminin kökleri toplamı kaçtır?',
-    opts:['5','6','-5','3','2'], ans:0,
-    exp:'Viète formülü: kökler toplamı = -b/a = -(-5)/1 = 5.' },
-  { cat:'ÖABT | Analiz', day:[6,3],
-    q:'f(x) = 3x² + 2x fonksiyonunun x=1\'deki türevi kaçtır?',
-    opts:['5','6','8','7','4'], ans:2,
-    exp:'f\'(x) = 6x+2. f\'(1) = 6×1+2 = 8.' }
+// ============== MOTIVASYON SÖZLERİ ==============
+var QUOTES = [
+  {q:'Hayatta en hakiki mürşit ilimdir.',p:'Atatürk'},
+  {q:'Matematik, aklın müziğidir.',p:'James Joseph Sylvester'},
+  {q:'Eğitim, insanın içindeki ateşin yakılmasıdır.',p:'Socrates'},
+  {q:'Başarı, hazırlık fırsatla buluştuğunda ortaya çıkar.',p:'Seneca'},
+  {q:'Bugünün çalışması, yarının başarısını hazırlar.',p:'Atatürk'},
+  {q:'Matematik, sonsuzluğun bilimidir.',p:'Leibniz'},
+  {q:'Çalışmadan, yorulmadan, üretmeden rahat yaşamak... bu bir insanın harcı değildir.',p:'Atatürk'},
+  {q:'Bir şeyi yapmak imkânsız görünüyorsa, o şeyi yapana kadar imkânsız kalır.',p:'Nelson Mandela'},
+  {q:'Geometri, Tanrı\'nın düşüncesidir.',p:'Platon'},
+  {q:'Zorluklar insanı kendini bulmaya zorlar.',p:'Epiktetos'},
+  {q:'Bilgi güçtür; öğrenen her şeye sahip olur.',p:'Francis Bacon'},
+  {q:'Küçük fırsatlar çoğu zaman büyük başarıların başlangıcıdır.',p:'Demosthenes'},
+  {q:'Sabır, başarının en güçlü silahıdır.',p:'Ali ibn Abi Talib'},
+  {q:'Öğrenmek bir hazinedir; öğreten onu her yere taşır.',p:'Çin Atasözü'}
 ];
 
-// ============================================================
-// DATA: Konular & Program
-// ============================================================
-var SUBJECTS = [
-  { id:'mat', label:'➗ GY-GK Matematik', count:'30 Soru', color:'#3b82f6',
-    topics:['Temel Matematik İşlemleri','Sayı Problemleri','Yüzde - Oran - Orantı','İşçi - Havuz Problemleri','Hız - Zaman','Grafik - Tablo Yorumlama'] },
-  { id:'tur', label:'📚 GY-GK Türkçe', count:'30 Soru', color:'#10b981',
-    topics:['Sözcükte Anlam','Cümlede Anlam','Anlam Bilgisi (Paragraf)','Dil Bilgisi','Yazım Kuralları','Noktalama İşaretleri'] },
-  { id:'tar', label:'🏺 GY-GK Tarih', count:'27 Soru', color:'#f59e0b',
-    topics:['Osmanlı Öncesi Türk Tarihi','Osmanlı Tarihi','Atatürk İlkeleri ve İnkılap Tarihi','Kurtuluş Savaşı','Çağdaş Türk ve Dünya Tarihi'] },
-  { id:'cog', label:'🌍 GY-GK Coğrafya', count:'18 Soru', color:'#6366f1',
-    topics:['Türkiye\'nin Fiziki Coğrafyası','Beşeri ve Ekonomik Coğrafya','Türkiye\'nin Yer Şekilleri','Harita Bilgisi'] },
-  { id:'vat', label:'⚖️ GY-GK Vatandaşlık', count:'9 Soru', color:'#8b5cf6',
-    topics:['Anayasa','Yasama - Yürütme - Yargı','Temel Hak ve Ödevler','İdare Hukuku (temel)'] },
-  { id:'gun', label:'📰 GY-GK Güncel', count:'6 Soru', color:'#ec4899',
-    topics:['Güncel Olaylar','Uluslararası Kuruluşlar','Kültürel ve Ekonomik Gelişmeler'] },
-  { id:'osy', label:'🔢 ÖABT - Sayılar', count:'Alan', color:'#38bdf8',
-    topics:['Doğal Sayılar','Tam Sayılar','Rasyonel Sayılar','Gerçek Sayılar','Ondalık Sayılar','Basamak Sistemi','Bölme/Bölünebilme'] },
-  { id:'oal', label:'📈 ÖABT - Analiz', count:'Alan', color:'#34d399',
-    topics:['Fonksiyonlar','Limit','Türev','İntegral'] },
-  { id:'ocb', label:'🧮 ÖABT - Cebir', count:'Alan', color:'#a78bfa',
-    topics:['Cebirsel İşlemler','Matrisler','Lineer Denklem Sistemleri'] },
-  { id:'oge', label:'📐 ÖABT - Geometri', count:'Alan', color:'#f472b6',
-    topics:['Nokta, Doğru, Düzlem','Analitik Geometri','Dönüşüm Geometrisi'] },
-  { id:'ouy', label:'📊 ÖABT - Uyg. Mat.', count:'Alan', color:'#fb923c',
-    topics:['Ölçme','İstatistik ve Olasılık','Geometrik Cisimlerin Alan ve Hacimleri'] },
-  { id:'oeg', label:'👨‍🏫 ÖABT - Alan Eğitimi', count:'Alan', color:'#4ade80',
-    topics:['Matematik Öğretim İlke ve Yöntemleri','İlköğretim Matematik Müfredatı'] }
+// ============== KONULAR ==============
+var SUBJECTS=[
+  {id:'mat',label:'➗ GY-GK Matematik',count:'30 S',color:'#3b82f6',topics:['Temel İşlemler','Sayı Problemleri','Yüzde-Oran-Orantı','İşçi-Havuz','Hız-Zaman','Grafik-Tablo']},
+  {id:'tur',label:'📚 GY-GK Türkçe',count:'30 S',color:'#10b981',topics:['Sözcükte Anlam','Cümlede Anlam','Paragraf','Dil Bilgisi','Yazım Kuralları','Noktalama']},
+  {id:'tar',label:'🏺 GY-GK Tarih',count:'27 S',color:'#f59e0b',topics:['Osmanlı Öncesi Türk Tarihi','Osmanlı Tarihi','Atatürk ve İnkılap Tarihi','Kurtuluş Savaşı','Çağdaş Tarih']},
+  {id:'cog',label:'🌍 GY-GK Coğrafya',count:'18 S',color:'#6366f1',topics:['Fiziki Coğrafya','Beşeri Coğrafya','Yer Şekilleri','Harita Bilgisi']},
+  {id:'vat',label:'⚖️ GY-GK Vatandaşlık',count:'9 S',color:'#8b5cf6',topics:['Anayasa','Yasama-Yürütme-Yargı','Temel Hak ve Ödevler','İdare Hukuku']},
+  {id:'osy',label:'🔢 ÖABT Sayılar',count:'Alan',color:'#38bdf8',topics:['Doğal/Tam Sayılar','Rasyonel Sayılar','Gerçek Sayılar','Basamak Sistemi','Bölünebilme']},
+  {id:'oal',label:'📈 ÖABT Analiz',count:'Alan',color:'#34d399',topics:['Fonksiyonlar','Limit','Türev','İntegral']},
+  {id:'ocb',label:'🧮 ÖABT Cebir',count:'Alan',color:'#a78bfa',topics:['Cebirsel İşlemler','Matrisler','Lineer Denklem']},
+  {id:'oge',label:'📐 ÖABT Geometri',count:'Alan',color:'#f472b6',topics:['Analitik Geometri','Dönüşüm Geometrisi','Düzlem Geometri']},
+  {id:'oeg',label:'👨‍🏫 ÖABT Alan Eğitimi',count:'Alan',color:'#4ade80',topics:['Öğretim İlke ve Yöntemleri','İlköğretim Mat. Müfredatı']}
 ];
 
-var PLANNER = [
-  { day:'Pazartesi', tasks:['ÖABT: Analiz / Sayılar (Konu)', 'GY-GK Türkçe (Paragraf + Sözel)'], color:'#3b82f6' },
-  { day:'Salı', tasks:['ÖABT: Cebir (Konu + Test)', 'GY-GK Matematik (Soru Çözümü)'], color:'#10b981' },
-  { day:'Çarşamba', tasks:['ÖABT: Geometri (Analitik)', 'GY-GK Tarih (Konu + Okuma)'], color:'#8b5cf6' },
-  { day:'Perşembe', tasks:['ÖABT: Uyg. Matematik (İstatistik)', 'GY-GK Coğrafya (Harita)'], color:'#ef4444' },
-  { day:'Cuma', tasks:['ÖABT: Alan Eğitimi', 'GY-GK Vatandaşlık + Güncel'], color:'#f59e0b' },
-  { day:'Cumartesi', tasks:['ÖABT: Genel Tekrar + Test', 'Tüm ÖABT Konuları Özet'], color:'#ec4899' },
-  { day:'Pazar', tasks:['GY-GK Türkiye Geneli Deneme', 'Tüm Deneme Analizi + Eksik Konu'], color:'#6366f1' }
+var PLANNER=[
+  {day:'Pazartesi',tasks:['ÖABT: Analiz / Sayılar','GY-GK Türkçe Paragraf'],color:'#3b82f6'},
+  {day:'Salı',tasks:['ÖABT: Cebir Test','GY-GK Matematik Soru'],color:'#10b981'},
+  {day:'Çarşamba',tasks:['ÖABT: Geometri','GY-GK Tarih Okuma'],color:'#8b5cf6'},
+  {day:'Perşembe',tasks:['ÖABT: Uyg. Matematik','GY-GK Coğrafya'],color:'#ef4444'},
+  {day:'Cuma',tasks:['ÖABT: Alan Eğitimi','GY-GK Vatandaşlık + Güncel'],color:'#f59e0b'},
+  {day:'Cumartesi',tasks:['ÖABT Genel Tekrar','ÖABT Özet + Test'],color:'#ec4899'},
+  {day:'Pazar',tasks:['GY-GK Deneme','Deneme Analizi + Eksik Konu'],color:'#6366f1'}
 ];
 
-// ============================================================
-// DURUM
-// ============================================================
-var progress = JSON.parse(localStorage.getItem('kpss26') || '{}');
-var quizQueue = [];
-var quizIdx = 0;
-var quizScore = 0;
+// Günlük soru bankası (tümü flat)
+var ALL_Q=[];
+Object.values(GYGK_Q).forEach(function(arr){arr.forEach(function(q){ALL_Q.push(q);});});
+Object.values(OABT_Q).forEach(function(arr){arr.forEach(function(q){ALL_Q.push(q);});});
 
-var DAYS_TR = ['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'];
-var now = new Date();
-var todayDow = now.getDay(); // 0=Pazar ... 6=Cumartesi
+// ============== STATE ==============
+var progress=JSON.parse(localStorage.getItem('kpss26')||'{}');
+var qQueue=[],qIdx=0,qScore=0;
+var denQueue=[],denIdx=0,denResults=[];
+var now=new Date();
+var todayDow=(now.getDay()+6)%7; // 0=Mon...6=Sun
 
-// ============================================================
-// NAVİGASYON
-// ============================================================
-document.getElementById('mainNav').addEventListener('click', function(e) {
-  var btn = e.target.closest('.nav-btn');
-  if (!btn) return;
-  var pageId = btn.getAttribute('data-page');
-  document.querySelectorAll('.nav-btn').forEach(function(b){ b.classList.remove('active'); });
-  document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
+// ============== NAVIGATION ==============
+document.getElementById('mainNav').addEventListener('click',function(e){
+  var btn=e.target.closest('.nbtn'); if(!btn) return;
+  var pg=btn.getAttribute('data-page');
+  document.querySelectorAll('.nbtn').forEach(function(b){b.classList.remove('active');});
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
   btn.classList.add('active');
-  document.getElementById('page-' + pageId).classList.add('active');
+  document.getElementById('page-'+pg).classList.add('active');
 });
 
-// ============================================================
-// TARİH & SAYAÇ
-// ============================================================
-var months = ['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'];
-document.getElementById('header-date').textContent = now.getDate() + ' ' + months[now.getMonth()] + ' ' + now.getFullYear() + ' ' + DAYS_TR[todayDow];
+// ============== QUOTE ==============
+var doy=Math.floor((now-new Date(now.getFullYear(),0,0))/(1000*60*60*24));
+var q=QUOTES[doy%QUOTES.length];
+document.getElementById('daily-quote').innerHTML='"'+q.q+'"<br><b style="color:var(--blue)">— '+q.p+'</b>';
 
-function tick() {
-  var n = Date.now();
-  function fill(target, ids) {
-    var diff = Math.max(0, target - n);
-    document.getElementById(ids[0]).textContent = String(Math.floor(diff/86400000)).padStart(2,'0');
-    document.getElementById(ids[1]).textContent = String(Math.floor(diff%86400000/3600000)).padStart(2,'0');
-    document.getElementById(ids[2]).textContent = String(Math.floor(diff%3600000/60000)).padStart(2,'0');
-  }
-  fill(new Date(2026,8,6,10,15,0).getTime(), ['d1','h1','m1']);
-  fill(new Date(2026,8,12,10,15,0).getTime(), ['d2','h2','m2']);
+// ============== COUNTDOWN ==============
+function tick(){
+  var n=Date.now();
+  function fill(t,ids){var d=Math.max(0,t-n);document.getElementById(ids[0]).textContent=String(Math.floor(d/86400000)).padStart(2,'0');document.getElementById(ids[1]).textContent=String(Math.floor(d%86400000/3600000)).padStart(2,'0');document.getElementById(ids[2]).textContent=String(Math.floor(d%3600000/60000)).padStart(2,'0');}
+  fill(new Date(2026,8,6,10,15,0).getTime(),['d1','h1','m1']);
+  fill(new Date(2026,8,12,10,15,0).getTime(),['d2','h2','m2']);
 }
-tick(); setInterval(tick, 30000);
+tick(); setInterval(tick,30000);
 
-// ============================================================
-// KONULAR
-// ============================================================
-function saveProgress(){ localStorage.setItem('kpss26', JSON.stringify(progress)); }
-
-function renderTopics() {
-  var el = document.getElementById('topic-list');
-  el.innerHTML = '';
-  var totalDone = 0, totalAll = 0;
-  SUBJECTS.forEach(function(sub) {
-    var done = 0;
-    sub.topics.forEach(function(t, i){ if(progress[sub.id+'-'+i]) done++; });
-    totalDone += done; totalAll += sub.topics.length;
-    var pct = sub.topics.length ? Math.round(done/sub.topics.length*100) : 0;
-    var items = sub.topics.map(function(t,i){
-      var key = sub.id+'-'+i, isDone = !!progress[key];
-      return '<div class="topic-item'+(isDone?' done':'')+'" data-key="'+key+'"><div class="custom-check">'+(isDone?'✓':'')+'</div><span>'+t+'</span></div>';
-    }).join('');
-    el.innerHTML += '<div class="subject-card"><div class="subject-head"><div class="subject-name">'+sub.label+'</div><span class="subject-count">'+sub.count+'</span></div>'
-      +'<div class="subject-progress-bar"><div class="subject-progress-fill" style="width:'+pct+'%;background:'+sub.color+'"></div></div>'
-      +'<div>'+items+'</div></div>';
+// ============== TOPICS ==============
+function saveP(){localStorage.setItem('kpss26',JSON.stringify(progress));}
+function renderTopics(){
+  var el=document.getElementById('topic-list'); el.innerHTML='';
+  var td=0,ta=0;
+  SUBJECTS.forEach(function(sub){
+    var done=0; sub.topics.forEach(function(t,i){if(progress[sub.id+'-'+i])done++;});
+    td+=done; ta+=sub.topics.length;
+    var pct=sub.topics.length?Math.round(done/sub.topics.length*100):0;
+    var items=sub.topics.map(function(t,i){var k=sub.id+'-'+i,d=!!progress[k];return'<div class="ti'+(d?' done':'')+'" data-key="'+k+'"><div class="ck">'+(d?'✓':'')+'</div><span>'+t+'</span></div>';}).join('');
+    el.innerHTML+='<div class="sc"><div class="sh"><div class="sn">'+sub.label+'</div><span class="scnt">'+sub.count+'</span></div><div class="spb"><div class="spf" style="width:'+pct+'%;background:'+sub.color+'"></div></div><div>'+items+'</div></div>';
   });
-  renderOverallInner(totalDone, totalAll);
-  el.addEventListener('click', function(e){
-    var item = e.target.closest('.topic-item');
-    if(!item) return;
-    var key = item.getAttribute('data-key');
-    progress[key] = !progress[key];
-    saveProgress(); renderTopics();
-  });
+  renderOvr(td,ta);
+  el.addEventListener('click',function(e){var it=e.target.closest('.ti');if(!it)return;var k=it.getAttribute('data-key');progress[k]=!progress[k];saveP();renderTopics();});
 }
+function renderOvr(d,a){var p=a?Math.round(d/a*100):0;document.getElementById('tot-pct').textContent=p+'%';document.getElementById('tot-fill').style.width=p+'%';}
 
-function renderOverall(){
-  var d=0,a=0;
-  SUBJECTS.forEach(function(sub){ sub.topics.forEach(function(t,i){ a++; if(progress[sub.id+'-'+i]) d++; }); });
-  renderOverallInner(d,a);
-}
-function renderOverallInner(done,total){
-  var pct = total ? Math.round(done/total*100) : 0;
-  document.getElementById('total-percent').textContent = pct+'%';
-  document.getElementById('total-fill').style.width = pct+'%';
-}
+// Today tip
+var tips=['Tarih konularını çalış 🏺','Matematik soru çöz ➗','Coğrafya harita çalış 🌍','ÖABT Geometri çalış 📐','Türkçe paragraf oku 📚','ÖABT Analiz tekrar 📈','Deneme sınavı çöz 📝'];
+document.getElementById('today-tip').textContent='📌 Bugünkü öneri: '+tips[todayDow];
 
-// Günlük odak konusu
-var todayFocus = ['Tarih konularını çalış 🏺','Matematik soru çöz ➗','Coğrafya harita çalış 🌍','ÖABT Geometri çalış 📐','Türkçe paragraf oku 📚','ÖABT Analiz tekrar 📈','Deneme sınavı çöz 📝'];
-document.getElementById('today-topic').textContent = '📌 Bugünkü öneri: ' + todayFocus[todayDow];
-
-// ============================================================
-// PLANNER
-// ============================================================
+// ============== PLANNER ==============
 function renderPlanner(){
-  var el = document.getElementById('planner-list');
+  var el=document.getElementById('planner-list');
   PLANNER.forEach(function(d,i){
-    var isToday = (i === ((todayDow+6)%7)); // Mon=0 align
-    el.innerHTML += '<div class="day-card"'+(isToday?' style="border-color:'+d.color+'"':'')+'>'+
-      '<div class="day-name" style="color:'+d.color+'">'+d.day+(isToday?' 👈 Bugün':'')+
-      '</div><div class="day-tasks">'+d.tasks.map(function(t){ return '<div class="task-pill" style="border-left-color:'+d.color+'">'+t+'</div>'; }).join('')+'</div></div>';
+    var today=i===todayDow;
+    el.innerHTML+='<div class="dc"'+(today?' style="border-color:'+d.color+'"':'')+'>'+
+      '<div class="dn" style="color:'+d.color+'">'+d.day+(today?' 👈 Bugün':'')+
+      '</div><div class="dt2">'+d.tasks.map(function(t){return'<div class="tp" style="border-left-color:'+d.color+'">'+t+'</div>';}).join('')+'</div></div>';
   });
 }
 
-// ============================================================
-// QUIZ - Günlük Rotasyon
-// ============================================================
-function getDailyQuestions(){
-  // Haftanın gününe göre sorular filtrele
-  var daily = ALL_QUESTIONS.filter(function(q){ return q.day.indexOf(todayDow) !== -1; });
-  // Yeterli soru yoksa hepsini al
-  if(daily.length < 5) daily = ALL_QUESTIONS.slice();
-  // Shuffle
-  for(var i=daily.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=daily[i]; daily[i]=daily[j]; daily[j]=t; }
-  return daily;
-}
-
+// ============== DAILY QUIZ ==============
+function shuffle(arr){var a=arr.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
 function startQuiz(){
-  quizQueue = getDailyQuestions();
-  quizIdx = 0; quizScore = 0;
-  document.getElementById('quiz-end').style.display = 'none';
-  document.getElementById('quiz-box').style.display = 'block';
-  document.getElementById('quiz-subtitle').textContent = DAYS_TR[todayDow] + ' günü için ' + quizQueue.length + ' soru hazır!';
+  qQueue=shuffle(ALL_Q.slice()); qIdx=0; qScore=0;
+  document.getElementById('quiz-end').style.display='none';
+  document.getElementById('quiz-box').style.display='block';
+  document.getElementById('quiz-sub').textContent='Tüm konulardan '+qQueue.length+' soru hazır!';
   loadQ();
 }
-
 function loadQ(){
-  if(quizIdx >= quizQueue.length){ showEnd(); return; }
-  var q = quizQueue[quizIdx];
-  document.getElementById('q-category').textContent = q.cat;
-  document.getElementById('q-score').textContent = quizScore;
-  document.getElementById('q-counter').textContent = 'Soru ' + (quizIdx+1) + ' / ' + quizQueue.length;
-  document.getElementById('q-text').textContent = q.q;
-  var opts = document.getElementById('q-options');
-  opts.innerHTML = '';
+  if(qIdx>=qQueue.length){showQEnd();return;}
+  var q=qQueue[qIdx];
+  document.getElementById('q-cat').textContent=q.cat||'Soru';
+  document.getElementById('q-sc').textContent=qScore;
+  document.getElementById('q-cnt').textContent='Soru '+(qIdx+1)+' / '+qQueue.length;
+  document.getElementById('q-txt').textContent=q.q;
+  var opts=document.getElementById('q-opts'); opts.innerHTML='';
   var L=['A','B','C','D','E'];
-  q.opts.forEach(function(opt,i){
-    var btn = document.createElement('button');
-    btn.className = 'option-btn';
-    btn.innerHTML = '<span class="opt-letter">'+L[i]+'</span>'+opt;
-    btn.addEventListener('click', function(){ selectOpt(i); });
-    opts.appendChild(btn);
-  });
-  document.getElementById('q-feedback').className = 'feedback-box';
-  document.getElementById('btn-next').style.display = 'none';
+  q.opts.forEach(function(o,i){var btn=document.createElement('button');btn.className='obtn';btn.innerHTML='<span class="ol">'+L[i]+'</span>'+o;btn.addEventListener('click',function(){selQ(i);});opts.appendChild(btn);});
+  document.getElementById('q-fb').className='fb';
+  document.getElementById('btn-nxt').style.display='none';
 }
-
-function selectOpt(idx){
-  var q = quizQueue[quizIdx];
-  var btns = document.querySelectorAll('.option-btn');
-  btns.forEach(function(b){ b.disabled=true; });
-  var fb = document.getElementById('q-feedback');
-  if(idx === q.ans){
-    btns[idx].classList.add('correct'); quizScore+=10;
-    fb.className='feedback-box show success';
-    document.getElementById('q-feedback-title').textContent='✅ Doğru Cevap!';
-  } else {
-    btns[idx].classList.add('wrong'); btns[q.ans].classList.add('correct');
-    fb.className='feedback-box show fail';
-    document.getElementById('q-feedback-title').textContent='❌ Yanlış Cevap';
-  }
-  document.getElementById('q-feedback-text').textContent = q.exp;
-  document.getElementById('btn-next').style.display='block';
-  document.getElementById('q-score').textContent = quizScore;
+function selQ(i){
+  var q=qQueue[qIdx];
+  document.querySelectorAll('#q-opts .obtn').forEach(function(b){b.disabled=true;});
+  var fb=document.getElementById('q-fb');
+  if(i===q.ans){document.querySelectorAll('#q-opts .obtn')[i].classList.add('correct');qScore+=10;fb.className='fb show ok';document.getElementById('q-fbt').textContent='✅ Doğru!';}
+  else{document.querySelectorAll('#q-opts .obtn')[i].classList.add('wrong');document.querySelectorAll('#q-opts .obtn')[q.ans].classList.add('correct');fb.className='fb show err';document.getElementById('q-fbt').textContent='❌ Yanlış';}
+  document.getElementById('q-fbtx').textContent=q.exp;
+  document.getElementById('btn-nxt').style.display='block';
+  document.getElementById('q-sc').textContent=qScore;
 }
-
-function showEnd(){
+function showQEnd(){
   document.getElementById('quiz-box').style.display='none';
   document.getElementById('quiz-end').style.display='block';
-  var total = quizQueue.length*10;
-  document.getElementById('end-score').textContent = quizScore+' / '+total;
-  var pct = Math.round(quizScore/total*100);
-  document.getElementById('end-msg').textContent = pct>=80?'Harika! Formun çok iyi 💪':pct>=50?'İyi gidiyorsun, devam et! 📚':'Hatalı konuları tekrar çalış 🔁';
+  document.getElementById('end-sc').textContent=qScore+' / '+(qQueue.length*10);
+  var p=Math.round(qScore/qQueue.length/10*100);
+  document.getElementById('end-msg').textContent=p>=80?'Harika performans 💪':p>=50?'İyi gidiyorsun, devam et! 📚':'Hatalı konuları tekrar çalış 🔁';
+}
+document.getElementById('btn-nxt').addEventListener('click',function(){qIdx++;loadQ();});
+document.getElementById('btn-rs').addEventListener('click',startQuiz);
+
+// ============== MINI DENEME ==============
+function buildDeneme(){
+  var qs=[];
+  function add(arr,cat,n){shuffle(arr).slice(0,n).forEach(function(q){qs.push(Object.assign({},q,{denCat:cat}));});}
+  add(GYGK_Q.turkce,'Türkçe',5);
+  add(GYGK_Q.matematik,'Matematik',5);
+  add(GYGK_Q.tarih,'Tarih',4);
+  add(GYGK_Q.cografya,'Coğrafya',3);
+  add(GYGK_Q.vatandaslik,'Vatandaşlık',2);
+  add(GYGK_Q.guncel,'Güncel',1);
+  add(OABT_Q.sayilar,'ÖABT Sayılar',2);
+  add(OABT_Q.geometri,'ÖABT Geometri',2);
+  add(OABT_Q.analiz,'ÖABT Analiz',2);
+  add(OABT_Q.cebir,'ÖABT Cebir',2);
+  add(OABT_Q.alanEgitimi,'ÖABT Alan Eğitimi',2);
+  return qs;
 }
 
-document.getElementById('btn-next').addEventListener('click', function(){ quizIdx++; loadQ(); });
-document.getElementById('btn-restart').addEventListener('click', startQuiz);
+document.getElementById('btn-start-den').addEventListener('click',function(){
+  denQueue=buildDeneme(); denIdx=0; denResults=[];
+  document.getElementById('den-info').style.display='none';
+  document.getElementById('den-result').style.display='none';
+  document.getElementById('den-box').style.display='block';
+  loadDen();
+});
 
-// ============================================================
-// BAŞLAT
-// ============================================================
+function loadDen(){
+  if(denIdx>=denQueue.length){showDenResult();return;}
+  var q=denQueue[denIdx];
+  document.getElementById('den-cat').textContent=q.denCat;
+  document.getElementById('den-cnt').textContent=(denIdx+1)+' / '+denQueue.length;
+  document.getElementById('den-txt').textContent=q.q;
+  var opts=document.getElementById('den-opts'); opts.innerHTML='';
+  var L=['A','B','C','D','E'];
+  q.opts.forEach(function(o,i){var btn=document.createElement('button');btn.className='obtn';btn.innerHTML='<span class="ol">'+L[i]+'</span>'+o;btn.addEventListener('click',function(){selDen(i);});opts.appendChild(btn);});
+  document.getElementById('den-fb').className='fb';
+  document.getElementById('btn-den-nxt').style.display='none';
+  document.getElementById('btn-den-skip').style.display='block';
+}
+
+function selDen(i){
+  var q=denQueue[denIdx];
+  document.querySelectorAll('#den-opts .obtn').forEach(function(b){b.disabled=true;});
+  document.getElementById('btn-den-skip').style.display='none';
+  var correct=i===q.ans;
+  if(correct){document.querySelectorAll('#den-opts .obtn')[i].classList.add('correct');document.getElementById('den-fb').className='fb show ok';document.getElementById('den-fbt').textContent='✅ Doğru!';}
+  else{document.querySelectorAll('#den-opts .obtn')[i].classList.add('wrong');document.querySelectorAll('#den-opts .obtn')[q.ans].classList.add('correct');document.getElementById('den-fb').className='fb show err';document.getElementById('den-fbt').textContent='❌ Yanlış';}
+  document.getElementById('den-fbtx').textContent=q.exp;
+  denResults.push({cat:q.denCat,ans:i,correct:correct,skipped:false});
+  document.getElementById('btn-den-nxt').style.display='block';
+}
+
+document.getElementById('btn-den-skip').addEventListener('click',function(){
+  denResults.push({cat:denQueue[denIdx].denCat,ans:-1,correct:false,skipped:true});
+  denIdx++; loadDen();
+});
+document.getElementById('btn-den-nxt').addEventListener('click',function(){denIdx++;loadDen();});
+
+function showDenResult(){
+  document.getElementById('den-box').style.display='none';
+  document.getElementById('den-result').style.display='block';
+  var dogru=0,yanlis=0,bos=0;
+  var catMap={};
+  denResults.forEach(function(r){
+    if(!catMap[r.cat])catMap[r.cat]={d:0,y:0,b:0};
+    if(r.skipped){bos++;catMap[r.cat].b++;}
+    else if(r.correct){dogru++;catMap[r.cat].d++;}
+    else{yanlis++;catMap[r.cat].y++;}
+  });
+  var net=(dogru-yanlis*0.25).toFixed(2);
+  // GY-GK vs ÖABT split
+  var gygkD=0,gygkY=0,oabtD=0,oabtY=0;
+  denResults.forEach(function(r){
+    var isO=r.cat.indexOf('ÖABT')===0;
+    if(r.skipped)return;
+    if(isO){if(r.correct)oabtD++;else oabtY++;}
+    else{if(r.correct)gygkD++;else gygkY++;}
+  });
+  var gygkNet=gygkD-gygkY*0.25;
+  var oabtNet=oabtD-oabtY*0.25;
+  var gygkPuan=Math.max(0,Math.round(gygkNet/20*100*0.9+50));
+  var oabtPuan=Math.max(0,Math.round(oabtNet/10*100*0.9+50));
+
+  document.getElementById('res-dogru').textContent=dogru;
+  document.getElementById('res-yanlis').textContent=yanlis;
+  document.getElementById('res-bos').textContent=bos;
+  document.getElementById('res-net').textContent=net;
+  document.getElementById('res-gygk').textContent=gygkPuan;
+  document.getElementById('res-oabt').textContent=oabtPuan;
+
+  // Konu bazlı
+  var sr=document.getElementById('sub-results'); sr.innerHTML='';
+  Object.keys(catMap).forEach(function(cat){
+    var c=catMap[cat]; var tot=c.d+c.y+c.b;
+    var pct=tot?Math.round(c.d/tot*100):0;
+    var cls=pct>=70?'good':pct>=40?'mid':'bad';
+    sr.innerHTML+='<div class="sub-result '+cls+'"><span style="font-size:.83rem;font-weight:600">'+cat+'</span><span style="font-size:.8rem;color:var(--muted)">'+c.d+'/'+tot+' (%'+pct+')</span></div>';
+  });
+
+  // AI Analiz
+  var ai=document.getElementById('ai-analysis'); ai.innerHTML='';
+  var lines=[];
+  lines.push('📊 Toplam net: <b>'+net+'</b> | GY-GK: <b>'+gygkNet.toFixed(1)+'</b> | ÖABT: <b>'+oabtNet.toFixed(1)+'</b>');
+  Object.keys(catMap).forEach(function(cat){
+    var c=catMap[cat]; var tot=c.d+c.y+c.b; var pct=tot?Math.round(c.d/tot*100):0;
+    if(pct>=70)lines.push('✅ <b>'+cat+'</b>: Güçlü alan, devam et! ('+c.d+'/'+tot+')');
+    else if(pct>=40)lines.push('⚠️ <b>'+cat+'</b>: Orta düzey, tekrar gerekiyor ('+c.d+'/'+tot+')');
+    else lines.push('🔴 <b>'+cat+'</b>: Zayıf alan — bu konuya bu hafta öncelik ver! ('+c.d+'/'+tot+')');
+  });
+  if(yanlis>dogru*0.5)lines.push('📌 Yanlış sayın fazla, cevaplarken daha dikkatli ol!');
+  if(bos>5)lines.push('📌 '+bos+' soruyu boş bıraktın — bilmediğin soruları da dene!');
+  if(gygkPuan>=70)lines.push('🎯 GY-GK puanın umut vadediyor!');
+  if(oabtPuan>=70)lines.push('🎯 ÖABT puanın güçlü görünüyor!');
+  lines.push('💡 Öneri: Zayıf dersleri Haftalık Program\'dan takip et!');
+  lines.forEach(function(l){ai.innerHTML+='<div class="ai-line">'+l+'</div>';});
+}
+
+document.getElementById('btn-den-restart').addEventListener('click',function(){
+  document.getElementById('den-result').style.display='none';
+  document.getElementById('den-info').style.display='block';
+});
+
+// ============== INIT ==============
 renderTopics();
 renderPlanner();
 startQuiz();
