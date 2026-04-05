@@ -7,6 +7,11 @@
 <meta name="theme-color" content="#1a1f3a">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="KPSS PRO">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#0d1117;--surface:rgba(255,255,255,0.05);--border:rgba(255,255,255,0.1);--text:#e6edf3;--muted:#8b949e;--blue:#3b82f6;--purple:#8b5cf6;--green:#10b981;--orange:#f59e0b;--red:#ef4444}
@@ -569,6 +574,17 @@ document.getElementById('btn-den-restart').addEventListener('click',function(){
 renderTopics();
 renderPlanner();
 startQuiz();
+
+// ============== SERVICE WORKER ==============
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('./sw.js').then(function(reg) {
+      console.log('SW Registered:', reg.scope);
+    }).catch(function(err) {
+      console.log('SW Fail:', err);
+    });
+  });
+}
 </script>
 </body>
 </html>
