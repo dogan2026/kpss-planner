@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>KPSS Asistanı 2026</title>
+<meta name="description" content="2026 KPSS Lisans ve ÖABT çalışma planı, konu takibi ve soru pratiği.">
+<meta name="theme-color" content="#1a1f3a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0d1117;
+  --surface: rgba(255,255,255,0.05);
+  --border: rgba(255,255,255,0.1);
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --blue: #3b82f6;
+  --purple: #8b5cf6;
+  --green: #10b981;
+  --orange: #f59e0b;
+  --red: #ef4444;
+  --pink: #ec4899;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #0d1117 0%, #161b2e 100%);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ---- HEADER ---- */
+.header {
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+}
+
+.logo {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-badge {
+  background: linear-gradient(90deg, var(--blue), var(--purple));
+  border-radius: 8px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+}
+
+/* ---- NAV ---- */
+.nav {
+  display: flex;
+  overflow-x: auto;
+  gap: 4px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.02);
+  border-bottom: 1px solid var(--border);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.nav::-webkit-scrollbar { display: none; }
+
+.nav-btn {
+  flex-shrink: 0;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--muted);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: all 0.25s;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.nav-btn:hover, .nav-btn:active { color: var(--text); background: rgba(255,255,255,0.06); }
+.nav-btn.active {
+  color: #fff;
+  background: var(--blue);
+  border-color: var(--blue);
+  box-shadow: 0 2px 12px rgba(59,130,246,0.4);
+}
+
+/* ---- PAGES ---- */
+.page { display: none; padding: 20px 16px; animation: fadeUp 0.3s ease; }
+.page.active { display: block; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+/* ---- CARD ---- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  backdrop-filter: blur(8px);
+}
+
+h2.page-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+p.page-subtitle {
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+/* ---- COUNTDOWN ---- */
+.progress-label { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; }
+.progress-bar { height: 8px; background: rgba(255,255,255,0.08); border-radius: 8px; overflow: hidden; margin-bottom: 24px; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--purple)); border-radius: 8px; transition: width 0.6s ease; }
+
+.tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  background: rgba(59,130,246,0.18);
+  color: #60a5fa;
+}
+.tag.orange { background: rgba(245,158,11,0.2); color: #fbbf24; }
+
+.countdown-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.countdown-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  text-align: center;
+}
+.countdown-card.blue { border-top: 3px solid var(--blue); }
+.countdown-card.orange { border-top: 3px solid var(--orange); }
+
+.countdown-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+.countdown-card .date { font-size: 0.75rem; color: var(--muted); margin-bottom: 14px; }
+
+.timer-row { display: flex; justify-content: center; gap: 6px; align-items: center; }
+.time-unit { text-align: center; }
+.time-num { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 700; line-height: 1; display: block; }
+.time-lbl { font-size: 0.62rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.time-sep { font-size: 1.4rem; color: var(--border); margin-bottom: 12px; }
+
+/* ---- TOPICS ---- */
+.subject-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; margin-bottom: 14px; }
+.subject-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.subject-name { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.subject-icon { font-size: 1.1rem; }
+.subject-count { font-size: 0.75rem; background: rgba(255,255,255,0.08); padding: 3px 8px; border-radius: 10px; font-weight: 600; }
+.subject-progress-bar { height: 4px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; margin-bottom: 10px; }
+.subject-progress-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--purple)); transition: width 0.4s; }
+
+.topic-item { display: flex; align-items: center; gap: 10px; padding: 8px 4px; border-radius: 8px; cursor: pointer; transition: background 0.15s; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+.topic-item:hover { background: rgba(255,255,255,0.04); }
+.topic-item span { font-size: 0.88rem; user-select: none; }
+
+.custom-check {
+  width: 20px; height: 20px; min-width: 20px;
+  border: 2px solid var(--muted);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+  font-size: 12px; font-weight: 700; color: white;
+}
+.topic-item.done .custom-check { background: var(--blue); border-color: var(--blue); }
+.topic-item.done span { color: var(--muted); text-decoration: line-through; }
+
+/* ---- PLANNER ---- */
+.day-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 14px; margin-bottom: 10px; }
+.day-name { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.day-tasks { display: flex; flex-direction: column; gap: 6px; }
+.task-pill { padding: 8px 12px; border-radius: 8px; font-size: 0.82rem; font-weight: 500; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-left-width: 3px; }
+
+/* ---- QUIZ ---- */
+.quiz-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.quiz-score-display { font-weight: 700; font-size: 0.9rem; background: rgba(255,255,255,0.07); padding: 6px 14px; border-radius: 20px; }
+.quiz-question-box { font-family: 'Outfit', sans-serif; font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px; font-weight: 500; }
+.quiz-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+
+.option-btn {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  padding: 14px 16px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.option-btn:active:not(:disabled) { transform: scale(0.98); }
+.option-btn:not(:disabled):hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); }
+.option-btn.correct { background: rgba(16,185,129,0.15); border-color: var(--green); }
+.option-btn.wrong { background: rgba(239,68,68,0.15); border-color: var(--red); opacity: 0.8; }
+.option-btn:disabled { cursor: not-allowed; }
+
+.opt-letter {
+  width: 30px; height: 30px; min-width: 30px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.85rem;
+}
+.option-btn.correct .opt-letter { background: var(--green); }
+.option-btn.wrong .opt-letter { background: var(--red); }
+
+.feedback-box {
+  display: none;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  border-left: 4px solid var(--blue);
+  background: rgba(255,255,255,0.04);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+.feedback-box.show { display: block; animation: fadeUp 0.3s ease; }
+.feedback-box.success { border-color: var(--green); }
+.feedback-box.fail { border-color: var(--red); }
+.feedback-title { font-weight: 700; margin-bottom: 4px; font-size: 0.95rem; }
+
+.btn-next {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: none;
+  transition: opacity 0.2s, transform 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.btn-next:active { transform: scale(0.97); }
+
+.quiz-end-box { text-align: center; padding: 20px 0; }
+.quiz-end-box .score-big { font-family: 'Outfit', sans-serif; font-size: 3rem; font-weight: 800; color: var(--blue); }
+.quiz-end-box p { color: var(--muted); margin: 8px 0 20px; }
+.btn-restart {
+  padding: 12px 28px;
+  background: var(--blue);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">📖 KPSS Asistanı <span class="logo-badge">2026</span></div>
+</div>
+
+<nav class="nav" id="mainNav">
+  <button class="nav-btn active" data-page="dashboard">🏠 Anasayfa</button>
+  <button class="nav-btn" data-page="topics">📋 Konular</button>
+  <button class="nav-btn" data-page="planner">📅 Program</button>
+  <button class="nav-btn" data-page="quiz">✏️ Soru Çöz</button>
+</nav>
+
+<!-- ============ DASHBOARD ============ -->
+<div class="page active" id="page-dashboard">
+
+  <h2 class="page-title">Hedefine Adım Adım!</h2>
+  <p class="page-subtitle">Düzenli çalış, sınava hazır ol. Başarı senin elinde.</p>
+
+  <!-- Overall Progress -->
+  <div class="card">
+    <div class="progress-label">
+      <span>📊 Genel Konu İlerlemesi</span>
+      <span id="total-percent">0%</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="total-fill" style="width:0%"></div>
+    </div>
+  </div>
+
+  <!-- Countdowns -->
+  <div class="countdown-grid">
+    <div class="countdown-card blue">
+      <span class="tag">LİSANS</span>
+      <h3>GY - GK</h3>
+      <div class="date">6 Eylül 2026</div>
+      <div class="timer-row">
+        <div class="time-unit"><span class="time-num" id="d1">--</span><span class="time-lbl">Gün</span></div>
+        <div class="time-sep">:</div>
+        <div class="time-unit"><span class="time-num" id="h1">--</span><span class="time-lbl">Saat</span></div>
+        <div class="time-sep">:</div>
+        <div class="time-unit"><span class="time-num" id="m1">--</span><span class="time-lbl">Dk</span></div>
+      </div>
+    </div>
+    <div class="countdown-card orange">
+      <span class="tag orange">ÖABT</span>
+      <h3>Alan Sınavı</h3>
+      <div class="date">12 Eylül 2026</div>
+      <div class="timer-row">
+        <div class="time-unit"><span class="time-num" id="d2">--</span><span class="time-lbl">Gün</span></div>
+        <div class="time-sep">:</div>
+        <div class="time-unit"><span class="time-num" id="h2">--</span><span class="time-lbl">Saat</span></div>
+        <div class="time-sep">:</div>
+        <div class="time-unit"><span class="time-num" id="m2">--</span><span class="time-lbl">Dk</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TOPICS ============ -->
+<div class="page" id="page-topics">
+  <h2 class="page-title">Konu Takibi</h2>
+  <p class="page-subtitle">Tamamladığın konuları işaretle. Kaydedilir.</p>
+  <div id="topic-list"></div>
+</div>
+
+<!-- ============ PLANNER ============ -->
+<div class="page" id="page-planner">
+  <h2 class="page-title">Haftalık Program</h2>
+  <p class="page-subtitle">ÖABT ağırlıklı, GY-GK destekli çalışma takvimi.</p>
+  <div id="planner-list"></div>
+</div>
+
+<!-- ============ QUIZ ============ -->
+<div class="page" id="page-quiz">
+  <h2 class="page-title">Soru Pratiği</h2>
+  <p class="page-subtitle">Her konudan karma sorular, anında çözüm açıklaması.</p>
+  
+  <div class="card" id="quiz-box">
+    <div class="quiz-header">
+      <span class="tag" id="q-category">-</span>
+      <span class="quiz-score-display">Skor: <span id="q-score">0</span></span>
+    </div>
+    <div class="quiz-question-box" id="q-text">Soru yükleniyor...</div>
+    <div class="quiz-options" id="q-options"></div>
+    <div class="feedback-box" id="q-feedback">
+      <div class="feedback-title" id="q-feedback-title"></div>
+      <div id="q-feedback-text"></div>
+    </div>
+    <button class="btn-next" id="btn-next">Sonraki Soru →</button>
+  </div>
+
+  <div class="card" id="quiz-end" style="display:none">
+    <div class="quiz-end-box">
+      <div>🎉</div>
+      <div class="score-big" id="end-score"></div>
+      <p id="end-msg"></p>
+      <button class="btn-restart" id="btn-restart">Tekrar Başla</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// DATA
+// ============================================================
+var SUBJECTS = [
+  { id:'mat', label:'➗ GY-GK Matematik', count:'30 Soru', color:'#3b82f6',
+    topics:['Temel Matematik İşlemleri','Sayı Problemleri','Yüzde - Oran - Orantı','İşçi - Havuz Problemleri','Hız - Zaman Problemleri','Grafik - Tablo Yorumlama'] },
+  { id:'tur', label:'📚 GY-GK Türkçe', count:'30 Soru', color:'#10b981',
+    topics:['Sözcükte Anlam','Cümlede Anlam','Anlam Bilgisi (Paragraf)','Dil Bilgisi','Yazım Kuralları','Noktalama İşaretleri'] },
+  { id:'tar', label:'🏺 GY-GK Tarih', count:'27 Soru', color:'#f59e0b',
+    topics:['Osmanlı Öncesi Türk Tarihi','Osmanlı Tarihi','Atatürk İlkeleri ve İnkılap Tarihi','Kurtuluş Savaşı','Çağdaş Türk ve Dünya Tarihi'] },
+  { id:'cog', label:'🌍 GY-GK Coğrafya', count:'18 Soru', color:'#6366f1',
+    topics:['Türkiye\'nin Fiziki Coğrafyası','Beşeri ve Ekonomik Coğrafya','Türkiye\'nin Yer Şekilleri','Harita Bilgisi'] },
+  { id:'vat', label:'⚖️ GY-GK Vatandaşlık', count:'9 Soru', color:'#8b5cf6',
+    topics:['Anayasa','Yasama - Yürütme - Yargı','Temel Hak ve Ödevler','İdare Hukuku (temel)'] },
+  { id:'gun', label:'📰 GY-GK Güncel', count:'6 Soru', color:'#ec4899',
+    topics:['Güncel Olaylar','Uluslararası Kuruluşlar','Kültürel ve Ekonomik Gelişmeler'] },
+  { id:'osy', label:'🔢 ÖABT - Sayılar', count:'Alan', color:'#38bdf8',
+    topics:['Doğal Sayılar','Tam Sayılar','Rasyonel Sayılar','Gerçek Sayılar','Ondalık Sayılar','Basamak Sistemi','Bölme ve Bölünebilme Kuralları'] },
+  { id:'oal', label:'📈 ÖABT - Analiz', count:'Alan', color:'#34d399',
+    topics:['Fonksiyonlar','Limit','Türev','İntegral'] },
+  { id:'ocb', label:'🧮 ÖABT - Cebir', count:'Alan', color:'#a78bfa',
+    topics:['Cebirsel İşlemler','Matrisler','Lineer Denklem Sistemleri'] },
+  { id:'oge', label:'📐 ÖABT - Geometri', count:'Alan', color:'#f472b6',
+    topics:['Nokta, Doğru, Düzlem','Analitik Geometri','Dönüşüm Geometrisi'] },
+  { id:'ouy', label:'📊 ÖABT - Uyg. Matematik', count:'Alan', color:'#fb923c',
+    topics:['Ölçme','İstatistik ve Olasılık','Geometrik Cisimlerin Alan ve Hacimleri'] },
+  { id:'oeg', label:'👨‍🏫 ÖABT - Alan Eğitimi', count:'Alan', color:'#4ade80',
+    topics:['Matematik Öğretim İlke ve Yöntemleri','İlköğretim Matematik Müfredatı'] }
+];
+
+var PLANNER = [
+  { day:'Pazartesi', tasks:['ÖABT: Analiz / Sayılar (Konu)', 'GY-GK Türkçe (Paragraf + Sözel)'], color:'#3b82f6' },
+  { day:'Salı',      tasks:['ÖABT: Cebir (Konu + Test)', 'GY-GK Matematik (Soru Çözümü)'], color:'#10b981' },
+  { day:'Çarşamba',  tasks:['ÖABT: Geometri (Analitik)', 'GY-GK Tarih (Konu + Okuma)'], color:'#8b5cf6' },
+  { day:'Perşembe',  tasks:['ÖABT: Uyg. Matematik (İstatistik)', 'GY-GK Coğrafya (Harita)'], color:'#ef4444' },
+  { day:'Cuma',      tasks:['ÖABT: Alan Eğitimi (%20)', 'GY-GK Vatandaşlık + Güncel'], color:'#f59e0b' },
+  { day:'Cumartesi', tasks:['ÖABT: Genel Tekrar', 'ÖABT: Tüm Konular Özet Tekrarı'], color:'#ec4899' },
+  { day:'Pazar',     tasks:['GY-GK Türkiye Geneli Deneme', 'Tüm Deneme Analizi + Eksik Konu'], color:'#6366f1' }
+];
+
+var QUESTIONS = [
+  { cat:'GY-GK | Tarih',
+    q:'Osmanlı Devleti\'nde padişahın mutlak otoritesini ilk kez sınırlandıran belge hangisidir?',
+    opts:['Sened-i İttifak','Tanzimat Fermanı','Islahat Fermanı','Kanuni Esasi','Teşkilat-ı Esasiye'],
+    ans:0, exp:'Sened-i İttifak (1808), padişahın yetkilerini kısıtlayan ilk belgedir. II. Mahmut ile Ayanlar arasında imzalanmıştır.' },
+  { cat:'ÖABT | Geometri',
+    q:'A(2, -3) noktasının y=x doğrusuna göre simetriği B, B\'nin orijine göre simetriği C\'dir. C\'nin koordinatları nedir?',
+    opts:['(2,-3)','(-3, 2)','(3, -2)','(-2, 3)','(2, 3)'],
+    ans:2, exp:'A(x,y)\'nin y=x\'e göre simetriği B(y,x)=B(-3,2)\'dir. Orijine göre simetri işaret değiştirir: C(3,-2).' },
+  { cat:'GY-GK | Türkçe',
+    q:'"Ne doğan güneşe hükmüm geçer / Ne halden anlayan bulunur" dizelerinde hangisi YOKTUR?',
+    opts:['Sıfat-fiil','Olumsuzluk eki','Bağlaç','İsim tamlaması','Eylemsi'],
+    ans:3, exp:'Bu dizelerde "doğan" (sıfat-fiil), "ne...ne" (bağlaç) bulunur. Belirtili veya belirtisiz isim tamlaması kullanılmamıştır.' },
+  { cat:'ÖABT | Analiz',
+    q:'f(x) = x³ - 3x² + 4 fonksiyonunun yerel minimum noktasındaki değeri kaçtır?',
+    opts:['0','2','4','-2','8'],
+    ans:0, exp:'f\'(x)=3x²-6x=3x(x-2)=0 → x=0 ve x=2. x=2\'de minimum: f(2)=8-12+4=0.' },
+  { cat:'GY-GK | Coğrafya',
+    q:'Aşağıdakilerden hangisi tektonik kökenli göl DEĞİLDİR?',
+    opts:['İznik Gölü','Tuz Gölü','Sapanca Gölü','Meke Tuzlası','Burdur Gölü'],
+    ans:3, exp:'Meke Tuzlası volkanik (maar) gölüdür. Tuz, Sapanca, İznik ve Burdur tektonik kökenlidir.' },
+  { cat:'ÖABT | Sayılar',
+    q:'1\'den 100\'e kadar sayılar yan yana yazılan A sayısının 9\'a bölümünden kalan kaçtır?',
+    opts:['1','2','3','4','0'],
+    ans:0, exp:'1-100 arası rakamlar toplamı 901\'dir. 901: 9+0+1=10, 1+0=1. Kalan 1\'dir.' },
+  { cat:'GY-GK | Vatandaşlık',
+    q:'1982 Anayasası\'na göre savaş ilanına kim karar verir?',
+    opts:['Cumhurbaşkanı','TBMM','Milli Güvenlik Kurulu','Genelkurmay Başkanı','Bakanlar Kurulu'],
+    ans:1, exp:'1982 Anayasası 92. Madde: Savaş ilanına karar verme yetkisi TBMM\'ye aittir.' },
+  { cat:'GY-GK | Matematik',
+    q:'Malların %40\'ı %20 kârla, kalanın %50\'si %10 zararla, gerisi maliyete satılıyor. Kâr/zarar?',
+    opts:['%5 Kâr','%5 Zarar','%10 Kâr','Ne kâr ne zarar','%3 Kâr'],
+    ans:0, exp:'100 birim, 100TL maliyet → 40×120 + 30×90 + 30×100 = 4800+2700+3000 = 10500TL → %5 kâr.' },
+  { cat:'ÖABT | Cebir',
+    q:'A = [[1,2],[3,4]] ve B = [[5,6],[7,8]] matrisleri için AxB matrisinin (1,1) elemanı kaçtır?',
+    opts:['19','23','17','22','21'],
+    ans:0, exp:'AxB\'nin (1,1) elemanı: (1×5)+(2×7) = 5+14 = 19.' },
+  { cat:'GY-GK | Tarih',
+    q:'Kurtuluş Savaşı\'nda ilk düzenli ordu cephesi hangisidir?',
+    opts:['Batı Cephesi','Güney Cephesi','Doğu Cephesi','İç Anadolu Cephesi','Ege Cephesi'],
+    ans:2, exp:'Doğu Cephesi (Kazım Karabekir) ilk düzenli ordu cephesidir. Eylül-Kasım 1920\'deki Ermeni Savaşı\'nda zafer kazanılmıştır.' }
+];
+
+// ============================================================
+// STATE
+// ============================================================
+var progress = JSON.parse(localStorage.getItem('kpss26') || '{}');
+var quizOrder = [];
+var quizIdx = 0;
+var quizScore = 0;
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+document.getElementById('mainNav').addEventListener('click', function(e) {
+  var btn = e.target.closest('.nav-btn');
+  if (!btn) return;
+  var pageId = btn.getAttribute('data-page');
+
+  document.querySelectorAll('.nav-btn').forEach(function(b) { b.classList.remove('active'); });
+  document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+
+  btn.classList.add('active');
+  document.getElementById('page-' + pageId).classList.add('active');
+});
+
+// ============================================================
+// COUNTDOWN
+// ============================================================
+function tick() {
+  var now = Date.now();
+  function fill(target, ids) {
+    var diff = target - now;
+    if (diff < 0) diff = 0;
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    document.getElementById(ids[0]).textContent = String(d).padStart(2,'0');
+    document.getElementById(ids[1]).textContent = String(h).padStart(2,'0');
+    document.getElementById(ids[2]).textContent = String(m).padStart(2,'0');
+  }
+  // Using numeric constructor to avoid Safari ISO string bug
+  fill(new Date(2026,8,6,10,15,0).getTime(), ['d1','h1','m1']);
+  fill(new Date(2026,8,12,10,15,0).getTime(), ['d2','h2','m2']);
+}
+tick();
+setInterval(tick, 30000);
+
+// ============================================================
+// TOPICS
+// ============================================================
+function saveProgress() { localStorage.setItem('kpss26', JSON.stringify(progress)); }
+
+function renderTopics() {
+  var el = document.getElementById('topic-list');
+  el.innerHTML = '';
+  var totalDone = 0, totalAll = 0;
+
+  SUBJECTS.forEach(function(sub) {
+    var done = 0;
+    sub.topics.forEach(function(t, i) { if (progress[sub.id + '-' + i]) done++; });
+    totalDone += done;
+    totalAll += sub.topics.length;
+
+    var pct = sub.topics.length ? Math.round(done / sub.topics.length * 100) : 0;
+
+    var card = document.createElement('div');
+    card.className = 'subject-card';
+
+    var head = '<div class="subject-head">' +
+      '<div class="subject-name"><span class="subject-icon">' + sub.label.split(' ')[0] + '</span>' +
+      sub.label.substring(sub.label.indexOf(' ')+1) + '</div>' +
+      '<span class="subject-count">' + sub.count + '</span></div>';
+
+    var bar = '<div class="subject-progress-bar"><div class="subject-progress-fill" style="width:' + pct + '%;background:' + sub.color + '"></div></div>';
+
+    var items = '';
+    sub.topics.forEach(function(t, i) {
+      var key = sub.id + '-' + i;
+      var isDone = !!progress[key];
+      items += '<div class="topic-item' + (isDone ? ' done' : '') + '" data-key="' + key + '">' +
+        '<div class="custom-check">' + (isDone ? '✓' : '') + '</div>' +
+        '<span>' + t + '</span></div>';
+    });
+
+    card.innerHTML = head + bar + items;
+    el.appendChild(card);
+  });
+
+  // click delegation
+  el.addEventListener('click', function(e) {
+    var item = e.target.closest('.topic-item');
+    if (!item) return;
+    var key = item.getAttribute('data-key');
+    progress[key] = !progress[key];
+    saveProgress();
+    renderTopics();
+    renderOverall();
+  });
+
+  renderOverallInner(totalDone, totalAll);
+}
+
+function renderOverall() {
+  var totalDone = 0, totalAll = 0;
+  SUBJECTS.forEach(function(sub) {
+    sub.topics.forEach(function(t, i) {
+      totalAll++;
+      if (progress[sub.id + '-' + i]) totalDone++;
+    });
+  });
+  renderOverallInner(totalDone, totalAll);
+}
+
+function renderOverallInner(done, total) {
+  var pct = total ? Math.round(done / total * 100) : 0;
+  document.getElementById('total-percent').textContent = pct + '%';
+  document.getElementById('total-fill').style.width = pct + '%';
+}
+
+// ============================================================
+// PLANNER
+// ============================================================
+function renderPlanner() {
+  var el = document.getElementById('planner-list');
+  el.innerHTML = '';
+  PLANNER.forEach(function(d) {
+    var tasksHtml = d.tasks.map(function(t) {
+      return '<div class="task-pill" style="border-left-color:' + d.color + '">' + t + '</div>';
+    }).join('');
+    el.innerHTML += '<div class="day-card"><div class="day-name" style="color:' + d.color + '">' + d.day + '</div><div class="day-tasks">' + tasksHtml + '</div></div>';
+  });
+}
+
+// ============================================================
+// QUIZ
+// ============================================================
+function shuffleArr(arr) {
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+  }
+  return a;
+}
+
+function startQuiz() {
+  quizOrder = shuffleArr(QUESTIONS.map(function(_,i){return i;}));
+  quizIdx = 0;
+  quizScore = 0;
+  document.getElementById('quiz-end').style.display = 'none';
+  document.getElementById('quiz-box').style.display = 'block';
+  loadQuestion();
+}
+
+function loadQuestion() {
+  if (quizIdx >= quizOrder.length) { showEnd(); return; }
+  var q = QUESTIONS[quizOrder[quizIdx]];
+  document.getElementById('q-category').textContent = q.cat;
+  document.getElementById('q-score').textContent = quizScore;
+  document.getElementById('q-text').textContent = (quizIdx + 1) + '. ' + q.q;
+
+  var opts = document.getElementById('q-options');
+  opts.innerHTML = '';
+  var letters = ['A','B','C','D','E'];
+  q.opts.forEach(function(opt, i) {
+    var btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.setAttribute('data-index', i);
+    btn.innerHTML = '<span class="opt-letter">' + letters[i] + '</span>' + opt;
+    btn.addEventListener('click', function() { selectOpt(i); });
+    opts.appendChild(btn);
+  });
+
+  var fb = document.getElementById('q-feedback');
+  fb.className = 'feedback-box';
+  document.getElementById('btn-next').style.display = 'none';
+}
+
+function selectOpt(idx) {
+  var q = QUESTIONS[quizOrder[quizIdx]];
+  var btns = document.querySelectorAll('.option-btn');
+  btns.forEach(function(b) { b.disabled = true; });
+
+  var fb = document.getElementById('q-feedback');
+  var correct = idx === q.ans;
+
+  if (correct) {
+    btns[idx].classList.add('correct');
+    quizScore += 10;
+    fb.className = 'feedback-box show success';
+    document.getElementById('q-feedback-title').textContent = '✅ Doğru Cevap!';
+  } else {
+    btns[idx].classList.add('wrong');
+    btns[q.ans].classList.add('correct');
+    fb.className = 'feedback-box show fail';
+    document.getElementById('q-feedback-title').textContent = '❌ Yanlış Cevap';
+  }
+
+  document.getElementById('q-feedback-text').textContent = q.exp;
+  document.getElementById('btn-next').style.display = 'block';
+  document.getElementById('q-score').textContent = quizScore;
+}
+
+function showEnd() {
+  document.getElementById('quiz-box').style.display = 'none';
+  document.getElementById('quiz-end').style.display = 'block';
+  var total = QUESTIONS.length * 10;
+  document.getElementById('end-score').textContent = quizScore + ' / ' + total;
+  var pct = Math.round(quizScore / total * 100);
+  var msg = pct >= 80 ? 'Harika bir performans! 💪' : pct >= 50 ? 'İyi gidiyorsun, biraz daha çalış! 📚' : 'Hata yaptığın konuları tekrar çalış! 🔁';
+  document.getElementById('end-msg').textContent = msg;
+}
+
+document.getElementById('btn-next').addEventListener('click', function() {
+  quizIdx++;
+  loadQuestion();
+});
+
+document.getElementById('btn-restart').addEventListener('click', function() {
+  startQuiz();
+});
+
+// ============================================================
+// INIT
+// ============================================================
+renderTopics();
+renderOverall();
+renderPlanner();
+startQuiz();
+</script>
+</body>
+</html>
