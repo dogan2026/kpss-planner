@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>KPSS Asistanı 2026</title>
+    <style>
+        :root {
+            --bg: #1a1f3a;
+            --card: #242b4d;
+            --text: #ffffff;
+            --accent: #3b82f6;
+        }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container { max-width: 600px; margin: 0 auto; }
+        .card {
+            background: var(--card);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border-left: 5px solid var(--accent);
+        }
+        h2 { font-size: 1.2rem; margin-top: 0; color: #60a5fa; }
+        .quote { font-style: italic; color: #94a3b8; margin-bottom: 10px; }
+        .author { font-weight: bold; text-align: right; display: block; color: #3b82f6; }
+        .task-item { background: #1e293b; padding: 10px; border-radius: 8px; margin-top: 10px; border-left: 3px solid #10b981; }
+        .btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            width: 100%;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h2>✨ Günün Motivasyonu</h2>
+        <div id="quote-container">
+            <p id="quote-text" class="quote">Yükleniyor...</p>
+            <span id="quote-author" class="author"></span>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📅 Bugünün Görevi</h2>
+        <div id="daily-task">
+            <div class="task-item">
+                <strong id="task-subject">Ders:</strong><br>
+                <span id="task-detail">Konu:</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📝 Günlük Mini Deneme</h2>
+        <p id="exam-info">Bugün çözmen gereken mini deneme içeriği:</p>
+        <div id="mini-exam-box" class="task-item" style="border-left-color: #f59e0b;">
+            <span id="exam-detail">Hesaplanıyor...</span>
+        </div>
+        <button class="btn" onclick="location.reload()">Yeni Hedef Belirle (Rastgele)</button>
+    </div>
+</div>
+
+<script>
+// ============== VERİ BANKASI ==============
+const quotes = [
+    {q:'Hayatta en hakiki mürşit ilimdir.', p:'Atatürk'},
+    {q:'Matematik, aklın müziğidir.', p:'James Joseph Sylvester'},
+    {q:'Eğitim, insanın içindeki ateşin yakılmasıdır.', p:'Socrates'},
+    {q:'Başarı, hazırlık fırsatla buluştuğunda ortaya çıkar.', p:'Seneca'},
+    {q:'Bugünün çalışması, yarının başarısını hazırlar.', p:'Atatürk'}
+];
+
+const subjects = [
+    {label:'➗ Matematik', topics:['Sayılar','Problemler','Geometri'], color:'#3b82f6'},
+    {label:'📚 Türkçe', topics:['Paragraf','Dil Bilgisi','Yazım Kuralları'], color:'#10b981'},
+    {label:'🏺 Tarih', topics:['Osmanlı Tarihi','İnkılap Tarihi','Selçuklular'], color:'#f59e0b'},
+    {label:'🌍 Coğrafya', topics:['Türkiye Fiziki Coğrafyası','Nüfus ve Yerleşme'], color:'#6366f1'}
+];
+
+// ============== DİNAMİK MANTIK ==============
+function updateDashboard() {
+    const d = new Date();
+    const dayOfMonth = d.getDate(); // Ayın günü (1-31)
+    
+    // 1. Günün Sözünü Seç
+    const quote = quotes[dayOfMonth % quotes.length];
+    document.getElementById('quote-text').innerText = `"${quote.q}"`;
+    document.getElementById('quote-author').innerText = `- ${quote.p}`;
+
+    // 2. Günün Dersini ve Konusunu Seç
+    const sub = subjects[dayOfMonth % subjects.length];
+    const topic = sub.topics[d.getDay() % sub.topics.length]; // Haftanın gününe göre alt konu
+    
+    document.getElementById('task-subject').innerText = sub.label;
+    document.getElementById('task-detail').innerText = "Çalışılacak: " + topic;
+    document.querySelector('#daily-task .task-item').style.borderLeftColor = sub.color;
+
+    // 3. Mini Deneme İçeriği (Her gün farklı soru dağılımı)
+    const soruSayisi = (dayOfMonth % 3 + 1) * 10; // 10, 20 veya 30 soru
+    document.getElementById('exam-detail').innerText = `${sub.label} branşından ${soruSayisi} soruluk mini deneme çöz!`;
+}
+
+// Sayfa yüklendiğinde çalıştır
+window.onload = updateDashboard;
+</script>
+
+</body>
+</html>
