@@ -56,12 +56,19 @@ body {
 }
 
 /* Header */
-header {
+.main-header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 24px;
+    margin-bottom: 40px;
+}
+
+.header-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 32px;
-    margin-bottom: 40px;
+    width: 100%;
 }
 
 .logo-container {
@@ -70,9 +77,21 @@ header {
     gap: 12px;
 }
 
-.logo-icon {
-    color: var(--accent-blue);
-    filter: drop-shadow(0 0 8px var(--accent-blue-glow));
+.logo-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.quote-strip {
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    flex: 1;
+    margin-left: 16px;
 }
 
 h1 {
@@ -93,6 +112,9 @@ h1 {
 .nav-menu {
     display: flex;
     gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
 }
 
 .nav-btn {
@@ -106,6 +128,7 @@ h1 {
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .nav-btn:hover {
@@ -585,19 +608,34 @@ h1 {
 
 /* Responsive */
 @media (max-width: 768px) {
-    header {
+    .main-header {
+        padding: 16px;
+    }
+
+    .header-top {
         flex-direction: column;
         gap: 12px;
-        padding: 12px 16px;
+        text-align: center;
     }
-    
+
+    .quote-strip {
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .logo-container {
+        justify-content: center;
+    }
+
     .logo-container h1 {
         font-size: 1.2rem;
     }
 
     .nav-btn {
-        padding: 6px 12px;
-        font-size: 0.9rem;
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        flex: 1 1 auto;
+        text-align: center;
     }
 
     .app-container {
