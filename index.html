@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 KPSS Çalışma Programı ve Takip Sistemi</title>
+    <meta name="description" content="2026 KPSS Lisans ve ÖABT sınavları hazırlık, geri sayım ve çalışma planı.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon.svg">
+    <meta name="theme-color" content="#3b82f6">
+</head>
+<body>
+    <!-- Update Toast Notification -->
+    <div id="update-toast" class="update-toast" role="alert" aria-live="polite">
+        <div class="update-toast-inner">
+            <span class="update-icon">🔄</span>
+            <div class="update-text">
+                <strong>Yeni sürüm hazır!</strong>
+                <span>Uygulamayı güncellemek için tıkla.</span>
+            </div>
+            <button id="btn-update-now" class="btn-update">Şimdi Güncelle</button>
+            <button id="btn-update-dismiss" class="btn-dismiss" aria-label="Kapat">✕</button>
+        </div>
+    </div>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="glass-panel" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 10px; flex: 1;">
+                <div class="logo-container" style="margin-bottom: 0;">
+                    <img src="logo.png" class="logo-img" alt="Logo" style="width: 32px; height: 32px; border-radius: 8px; object-fit: cover; border: 1px solid rgba(255,255,255,0.1);" onerror="this.style.display='none'">
+                    <h1>KPSS Asistanı <span class="badge">PRO</span></h1>
+                </div>
+            </div>
+            
+            <div class="quote-strip" id="daily-quote" style="flex: 1; text-align: right; font-size: 0.75rem; color: #8b949e; line-height: 1.3;"></div>
+
+            <nav class="nav-menu" style="flex-basis: 100%; margin-top: 10px;">
+                <button class="nav-btn active" data-target="dashboard">Dashboard</button>
+                <button class="nav-btn" data-target="topics">Konu Takibi</button>
+                <button class="nav-btn" data-target="planner">Çalışma Planı</button>
+                <button class="nav-btn" data-target="quiz">Soru Çöz</button>
+                <button class="nav-btn" data-target="deneme">🎯 Mini Deneme</button>
+            </nav>
+        </header>
+
+        <main class="content-area">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="page-section active">
+                <div class="hero-banners">
+                    <!-- Kariyer ve Motivasyon -->
+                    <div class="motivation-card glass-panel">
+                        <h2>Hedefine Adım Adım Yaklaş!</h2>
+                        <p>5 aylık süre zarfında düzenli çalışarak tüm konuları eksiksiz şekilde tamamlayabilirsin. Başarı senin elinde.</p>
+                        <div class="progress-overview">
+                            <div class="progress-details">
+                                <span>Genel İlerleme</span>
+                                <span id="total-progress-text">0%</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="total-progress-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Countdown Cards -->
+                    <div class="countdown-container">
+                        <div class="countdown-card primary-card glass-panel">
+                            <div class="countdown-header">
+                                <span class="tag">LİSANS</span>
+                                <h3>Genel Yetenek - Genel Kültür</h3>
+                                <p class="date">6 Eylül 2026</p>
+                            </div>
+                            <div class="countdown-timer" id="countdown-gygk">
+                                <div class="time-box"><span class="number" id="days-gygk">00</span><span class="label">Gün</span></div>
+                                <div class="separator">:</div>
+                                <div class="time-box"><span class="number" id="hours-gygk">00</span><span class="label">Saat</span></div>
+                                <div class="separator">:</div>
+                                <div class="time-box"><span class="number" id="minutes-gygk">00</span><span class="label">Dk</span></div>
+                            </div>
+                        </div>
+
+                        <div class="countdown-card secondary-card glass-panel">
+                            <div class="countdown-header">
+                                <span class="tag warning">ALAN BİLGİSİ</span>
+                                <h3>ÖABT Oturumu</h3>
+                                <p class="date">12 Eylül 2026</p>
+                            </div>
+                            <div class="countdown-timer" id="countdown-oabt">
+                                <div class="time-box"><span class="number" id="days-oabt">00</span><span class="label">Gün</span></div>
+                                <div class="separator">:</div>
+                                <div class="time-box"><span class="number" id="hours-oabt">00</span><span class="label">Saat</span></div>
+                                <div class="separator">:</div>
+                                <div class="time-box"><span class="number" id="minutes-oabt">00</span><span class="label">Dk</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Topics Tracking Section -->
+            <section id="topics" class="page-section">
+                <div class="section-header">
+                    <h2>Konu Dağılımı ve Takip</h2>
+                    <p>Tamamladığın konuları işaretleyerek ilerlemeni kaydet. Veriler cihazında güvenle saklanır.</p>
+                </div>
+                
+                <div class="topic-grid" id="topic-grid">
+                    <!-- Topics will be dynamically loaded here by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Planner Section -->
+            <section id="planner" class="page-section">
+                <div class="section-header">
+                    <h2>Akıllı Ders Programı</h2>
+                    <p>Aylık hedeflere ve bitirilmemiş konulara özel örnek çalışma ve tekrar döngüsü.</p>
+                </div>
+                
+                <div class="planner-grid glass-panel" id="planner-grid">
+                    <!-- Planner will be generated by JS -->
+                </div>
+            </section>
+
+            <!-- Quiz Section -->
+            <section id="quiz" class="page-section">
+                <div class="section-header">
+                    <h2>Soru Pratiği</h2>
+                    <p>Karışık KPSS ve ÖABT soruları ile kendini test et.</p>
+                </div>
+                
+                <div class="quiz-container glass-panel">
+                    <div class="quiz-header">
+                        <span class="tag" id="quiz-category">Kategori Seçiliyor...</span>
+                        <span class="quiz-score">Skor: <strong id="quiz-score-val">0</strong></span>
+                    </div>
+                    
+                    <div class="quiz-question" id="quiz-question-text">
+                        Soru yükleniyor...
+                    </div>
+
+                    <div class="quiz-options" id="quiz-options-container">
+                        <!-- Options injected via JS -->
+                    </div>
+
+                    <div class="quiz-feedback" id="quiz-feedback">
+                        <div class="feedback-icon" id="feedback-icon"></div>
+                        <div class="feedback-content">
+                            <h4 id="feedback-title">Sonuç</h4>
+                            <p id="feedback-text">Açıklama yükleniyor...</p>
+                        </div>
+                    </div>
+
+                    <div class="quiz-actions">
+                        <button class="btn-primary" id="btn-next-question" style="display: none;">Sonraki Soru ➔</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mini Deneme Section -->
+            <section id="deneme" class="page-section">
+                <div class="section-header">
+                    <h2>🎯 Mini Deneme</h2>
+                    <p>Gerçek KPSS dağılımına göre 30 soruluk sanal deneme.</p>
+                </div>
+
+                <!-- Bilgi Ekranı -->
+                <div class="glass-panel" id="den-info" style="margin-bottom: 20px;">
+                    <div style="margin-bottom:12px">
+                        <div style="font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:12px">📋 Deneme Yapısı (Yaklaşık 30 Soru)</div>
+                        <ul style="list-style: none; padding-left: 0; color: #8b949e; font-size: 0.9rem; line-height: 1.6;">
+                            <li>🟦 <strong>GY-GK Bölümü:</strong> Türkçe, Matematik, Tarih, Coğrafya, Vatandaşlık, Güncel</li>
+                            <li>🟧 <strong>ÖABT Bölümü:</strong> Geometri, Sayılar, Analiz, Cebir, Alan Eğitimi</li>
+                        </ul>
+                    </div>
+                    <div style="font-size:0.85rem;color:#8b949e;margin-bottom:20px;padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                        📌 Kurallar: Her doğru +1 net. Her 4 yanlış 1 doğruyu götürür. Boş sorular neti etkilemez.
+                    </div>
+                    <button class="btn-primary" style="width:100%; display:block" id="btn-start-deneme">Denemeyi Başlat 🚀</button>
+                </div>
+
+                <!-- Soru Ekranı -->
+                <div class="quiz-container glass-panel" id="den-box" style="display:none; margin-bottom: 20px;">
+                    <div class="quiz-header">
+                        <span class="tag" id="den-cat">-</span>
+                        <span class="quiz-score" id="den-cnt">-</span>
+                    </div>
+                    
+                    <div class="quiz-question" id="den-txt">Soru yükleniyor...</div>
+                    <div class="quiz-options" id="den-opts"></div>
+                    
+                    <div class="quiz-feedback" id="den-fb" style="display:none">
+                        <div class="feedback-icon" id="den-fb-icon"></div>
+                        <div class="feedback-content">
+                            <h4 id="den-fbt">Sonuç</h4>
+                            <p id="den-fbtx"></p>
+                        </div>
+                    </div>
+
+                    <div class="quiz-actions" style="display:flex; flex-direction: column; gap: 10px; margin-top: 20px;">
+                        <button class="btn-primary" id="btn-den-nxt" style="display: none;">Sonraki Soru ➔</button>
+                        <button class="btn-secondary" id="btn-den-skip" style="width: 100%; text-align: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; color: #8b949e; cursor: pointer; transition: all 0.2s;">Boş Bırak ➔</button>
+                    </div>
+                </div>
+
+                <!-- Sonuç Ekranı -->
+                <div id="den-result" style="display:none">
+                    <div class="glass-panel" style="margin-bottom: 15px;">
+                        <div style="text-align:center;margin-bottom:16px">
+                            <div style="font-size:2.5rem;margin-bottom:10px">📊</div>
+                            <h2 style="font-family:'Outfit',sans-serif; margin:0;">Deneme Sonucu</h2>
+                        </div>
+                        <div class="deneme-score-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;">
+                            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 15px; text-align: center;">
+                                <div id="res-dogru" style="font-size: 2rem; font-weight: 700; color: #10b981;">0</div>
+                                <div style="font-size: 0.8rem; color: #8b949e;">Doğru</div>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 15px; text-align: center;">
+                                <div id="res-yanlis" style="font-size: 2rem; font-weight: 700; color: #ef4444;">0</div>
+                                <div style="font-size: 0.8rem; color: #8b949e;">Yanlış</div>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 15px; text-align: center;">
+                                <div id="res-bos" style="font-size: 2rem; font-weight: 700; color: #f59e0b;">0</div>
+                                <div style="font-size: 0.8rem; color: #8b949e;">Boş</div>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 15px; text-align: center;">
+                                <div id="res-net" style="font-size: 2rem; font-weight: 700; color: #3b82f6;">0</div>
+                                <div style="font-size: 0.8rem; color: #8b949e;">Net</div>
+                            </div>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <div style="background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.3); border-radius: 12px; padding: 15px; text-align: center;">
+                                <div id="res-gygk" style="font-size: 1.5rem; font-weight: 700; color: #8b5cf6;">0</div>
+                                <div style="font-size: 0.75rem; color: #8b949e;">GY-GK Puanı</div>
+                            </div>
+                            <div style="background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3); border-radius: 12px; padding: 15px; text-align: center;">
+                                <div id="res-oabt" style="font-size: 1.5rem; font-weight: 700; color: #f59e0b;">0</div>
+                                <div style="font-size: 0.75rem; color: #8b949e;">ÖABT Puanı</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel" style="margin-bottom: 15px;">
+                        <h3 style="font-family:'Outfit',sans-serif; margin-bottom: 12px; margin-top: 0; font-size: 1.1rem;">Konu Analizi</h3>
+                        <div id="sub-results" style="display: flex; flex-direction: column; gap: 8px;"></div>
+                    </div>
+
+                    <div class="glass-panel ai-box" style="background: rgba(59,130,246,0.05); border: 1px solid rgba(59,130,246,0.2);">
+                        <h3 style="font-family:'Outfit',sans-serif; margin-bottom: 12px; margin-top: 0; font-size: 1.1rem; display: flex; align-items: center; gap: 8px;">🤖 Yapay Zeka Analizi</h3>
+                        <div id="ai-analysis" style="display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem; line-height: 1.6; color: #e6edf3;"></div>
+                    </div>
+
+                    <button class="btn-primary" style="width:100%; display:block; margin-top: 15px;" id="btn-den-restart">Yeniden Deneme Çöz 🔄</button>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="sorular_db.js"></script>
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            let newWorker = null;
+
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js').then(reg => {
+                    console.log('✅ Service Worker kayıtlı:', reg.scope);
+
+                    // Yeni SW kurulumu bekliyorsa toast göster
+                    reg.addEventListener('updatefound', () => {
+                        newWorker = reg.installing;
+                        newWorker.addEventListener('statechange', () => {
+                            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                // Yeni sürüm mevcut — kullanıcıya bildir
+                                showUpdateToast();
+                            }
+                        });
+                    });
+
+                    // Periyodik güncelleme kontrolü (15 dakikada bir)
+                    setInterval(() => reg.update(), 15 * 60 * 1000);
+
+                }).catch(err => console.error('❌ Service Worker kaydı başarısız:', err));
+
+                // Yeni SW devreye girince sayfayı yenile
+                let refreshing = false;
+                navigator.serviceWorker.addEventListener('controllerchange', () => {
+                    if (!refreshing) {
+                        refreshing = true;
+                        window.location.reload();
+                    }
+                });
+            });
+
+            function showUpdateToast() {
+                const toast = document.getElementById('update-toast');
+                if (toast) toast.classList.add('show');
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const btnUpdate = document.getElementById('btn-update-now');
+                const btnDismiss = document.getElementById('btn-update-dismiss');
+                const toast = document.getElementById('update-toast');
+
+                btnUpdate && btnUpdate.addEventListener('click', () => {
+                    if (newWorker) {
+                        newWorker.postMessage({ action: 'skipWaiting' });
+                    } else {
+                        window.location.reload();
+                    }
+                    toast && toast.classList.remove('show');
+                });
+
+                btnDismiss && btnDismiss.addEventListener('click', () => {
+                    toast && toast.classList.remove('show');
+                });
+            });
+        }
+    </script>
+</body>
+</html>
